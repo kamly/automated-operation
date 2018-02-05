@@ -62,7 +62,7 @@ menu(){
     done
 
     # 安装php
-    if [[  $php_version_select == 1 || $php_version_select == 2 ]];then
+    if [[  $install_php_yn == "y" || $install_php_yn == "Y" ]];then
 
         while :;do 
           echo -e "$YELLOW"
@@ -82,7 +82,7 @@ menu(){
           echo -e "$YELLOW"
         else
           echo "You select install ${php_bz[${php_version_select}]}"
-        . ./include/php.sh
+          . ./include/php.sh
         fi
     else
        echo "Not install or input wrong value for Php!"
