@@ -1,0 +1,37 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:     nginx
+# Required-Start:
+# Required-Stop:
+# Default-Start:        2 3 4 5
+# Default-Stop:         0 1 6
+# Short-Description: nginx
+# Description: nginx server
+### END INIT INFO
+. /lib/lsb/init-functions
+PROGRAM=/usr/local/nginx/sbin/nginx
+
+test -x $PROGRAM || exit 0
+case "$1" in
+  start)
+     log_begin_msg "Starting Nginx server"
+	$PROGRAM
+     log_end_msg 0
+     ;;
+  stop)
+     PID=`cat /var/run/nginx.pid` 
+     log_begin_msg "Stopping Nginx server"
+     if [ ! -z "$PID" ]; then
+        kill -15 $PID
+     fi
+     log_end_msg 0
+     ;;
+  restart)
+     $0 stop
+     $0 start
+     ;;
+  *)
+     log_success_msg "Usage: service nginx {start|stop|restart}"
+     exit 1
+esac
+exit 0
