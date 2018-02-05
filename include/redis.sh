@@ -40,7 +40,7 @@ if [ $os == "centos" ];then
   chkconfig redis on && chkconfig save
   service redis start
 elif [ $os == "ubuntu" ];then
-  systemctl daemon-reload 
+  systemctl daemon-reload  # 刷新脚本内容
   service redis start
 fi      
 

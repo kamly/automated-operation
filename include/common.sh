@@ -31,7 +31,7 @@ WARN='\033[41,37m'
 # 检测安装 使用 -d /usr/local/xx  xx
 # 判断符号用 ==
 # ${src_dir}
-# 日志，创建目录，权限，删除，设置  mysql配置  php配置  /etc/ /conf/  add_vhost
+# 日志，创建目录，权限，删除，设置  mysql配置  php配置  /etc/ /conf/  add_vhost  先下载后使用/直接download
 #------------------------------
 
 # 设置软件包文件夹       

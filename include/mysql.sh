@@ -191,10 +191,8 @@ mysql_install_boot(){
 
     chown -R $mysql_user:$mysql_group $mysql_local && chmod 755 $mysql_local/bin/* # 赋值用户组和用户 赋值权限
 
-   
     cp -rf ${mysql_local}/support-files/mysql.server /etc/init.d/mysqld && chmod 755 /etc/init.d/mysqld
 
-    # sed -i 's@conf=/etc/my.cnf@conf=/usr/local/mysql/etc/my.cnf@g' /etc/init.d/mysqld  # 修改启动时候的配置文件
     sed -i "s:^basedir=.*:basedir=$mysql_local:g" /etc/init.d/mysqld # 更换目录位置
     sed -i "s:^datadir=.*:datadir=$mysql_data:g" /etc/init.d/mysqld # 更换存储位置
 
