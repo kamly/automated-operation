@@ -205,7 +205,7 @@ mysql_install_boot(){
     cd -
 
     # 初始化mysql
-    mkdir /usr/local/mysql/conf
+    mkdir /usr/local/mysql/etc
     if [ $mysql_version_select == 1 ];then
         cp -rf ./conf/my56.cnf /usr/local/mysql/etc/my.cnf
         $mysql_local/scripts/mysql_install_db --basedir=$mysql_local --datadir=$mysql_data --user=$mysql_user
@@ -213,6 +213,9 @@ mysql_install_boot(){
         cp -rf ./conf/my57.cnf /usr/local/mysql/etc/my.cnf
         $mysql_local/bin/mysqld --initialize-insecure --user=$mysql_user --basedir=$mysql_local --datadir=$mysql_data
     fi
+
+    # 删除默认的配置文件
+    rm -rf /etc/mysql
    
     # 设置服务
     if [[ $os == "centos" ]];then
