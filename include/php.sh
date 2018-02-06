@@ -122,5 +122,7 @@ install_php(){
 
     # 日志
     [ ! -d /data/logs/php ] && mkdir -p /data/logs/php
+    chown -R $php_user:$php_group /data/logs/php
+
 }
 install_php  
