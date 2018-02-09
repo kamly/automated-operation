@@ -103,7 +103,7 @@ install_php(){
 
     
     add_php_boot(){
-        # 添加服务器自动启动
+        # 设置 php 开机自启服务
         if [[ $os == "centos" ]];then
             chkconfig  php-fpm on  && chkconfig save
         elif  [[ $os == "ubuntu" ]];then
