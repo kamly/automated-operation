@@ -1,6 +1,6 @@
 # 自动化脚本配置lnmp环境
 
-由于大学配置环境遇到不少巨坑，所以一直想弄一个自动化脚本。
+由于大学期间，折腾服务器的配置环境遇到不少巨坑，所以一直想弄一个自动化脚本。
 
 功能：
 1. 安装 `./install.sh`   sync,nginx,php,redis,mysql 
@@ -40,7 +40,7 @@ apt-get update # 更新源
 apt-get installl git # 安装git
 # 拉取代码，建议脚本放在`/data/lnmp`
 mkdir -p /data
-git clone https://github.com/kamly/lnmp.git
+git clone git@github.com:kamly/automated-operation.git
 ```
 
 ## ./install.sh
