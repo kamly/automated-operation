@@ -30,7 +30,7 @@ chmod 755 /etc/init.d/redis
 # 设置 redis 开机自启服务
 update-rc.d redis defaults 
 
-# 复制配置文件,修改配置文件，后台运行+数据存储的位置+日志存储位置
+# 后台运行 数据存储的位置 日志存储位置
 mkdir $redis_install_dir/etc 
 mkdir -p /data/redis 
 mkdir -p /data/logs/redis

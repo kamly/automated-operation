@@ -6,7 +6,7 @@ pre_install_php(){
 
     # 校验用户组是否存在
     if [[ `grep www:x /etc/group | wc -l` == 0  ]]
-      groupadd $php_group
+        groupadd $php_group
     fi
 
     # 校验用户是否存在
@@ -56,9 +56,9 @@ install_libmcrypt
 # 安装 PHP
 install_php(){
  
-    # 将/usr/local/lib 加入默认的系统联接库
-    if [[ !-d /etc/ld.so.conf.d/usr_local_lib.conf ]]
-      echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf # 将内容输出到/etc/ld.so.conf.d/usr_local_lib.conf
+    # 使用ldconfig命令将/usr/local/lib加入到默认库
+    if [[ `sed -n '/\/usr\/local\/lib/p' /etc/ld.so.conf.d/usr_local_lib.conf | wc -l` == 0 ]];then
+      echo "/usr/local/lib" >> /etc/ld.so.conf.d/usr_local_lib.conf # 将 /usr/local/lib 输出到 /etc/ld.so.conf.d/usr_local_lib.conf
       ldconfig # 用户安装了一个新的动态链接库时,就需要手工运行这个命令.
     fi
 
