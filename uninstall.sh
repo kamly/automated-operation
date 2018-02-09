@@ -180,7 +180,7 @@ uninstall_mysql(){
 			# 删除 /data/xxx data/logs/xxx /usr/local/xxx
 			rm -rf /data/mysql /data/logs/mysql /usr/local/mysql 
 
-			# 删除软连
+			# 删除命令
 			sed -i '/mysql\/bin/'d /etc/profile
 			echo "export PATH=~/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin" >> /etc/profile
 			source /etc/profile

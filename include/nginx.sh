@@ -26,8 +26,12 @@ install_jemalloc(){
     make && make install
     make clean
     popd
-    echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf # 将内容输出到/etc/ld.so.conf.d/usr_local_lib.conf
-    ldconfig # 用户安装了一个新的动态链接库时,就需要手工运行这个命令.
+
+    # 将/usr/local/lib 加入默认的系统联接库
+    if [[ !-d /etc/ld.so.conf.d/usr_local_lib.conf ]]
+      echo "/usr/local/lib" > /etc/ld.so.conf.d/usr_local_lib.conf # 将内容输出到/etc/ld.so.conf.d/usr_local_lib.conf
+      ldconfig # 用户安装了一个新的动态链接库时,就需要手工运行这个命令.
+    fi
 }
 install_jemalloc
 
@@ -54,9 +58,13 @@ install_pcre
 # 安装 ngx
 ngx_install(){
   
+    # 校验用户组是否存在
+    if [[ `grep www:x /etc/group | wc -l` == 0  ]]
+      groupadd $ngx_group
+    fi
+
     # 校验用户是否存在
     if [[ `grep www /etc/passwd | wc -l` == 0 ]];then
-        groupadd $ngx_group
         useradd  -M -s /sbin/nologin -g $ngx_group $ngx_user # 创建用户  -M 表示不创建用户主目录  -s 表示指定用户所用的shell , 此处为/sbin/nologin，表示不登录  -g 表示指定用户的组名为$ngx_group, 用户名$ngx_user
     fi
     
@@ -88,7 +96,7 @@ ngx_settings(){
     mkdir -p ${ngx_root_dir}/${ngx_default}  $ngx_dir/vhost ${ngx_logs} # 创建网站根目录 虚拟目录 日志目录
     chown -R ${ngx_user}:${ngx_group} $ngx_root_dir  $ngx_dir $ngx_logs # 将档案的拥有者加以改变
 
-    ln -s $ngx_dir/sbin/nginx /usr/bin/nginx   # 删除之前可能存在的链接 ，设置软连接
+    ln -s $ngx_dir/sbin/nginx /usr/bin/nginx   # 设置软连接
 
     cp ./conf/nginx.conf $ngx_dir/conf   # 复制配置文件
 
