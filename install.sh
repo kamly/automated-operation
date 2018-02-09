@@ -15,8 +15,7 @@ echo -e "$GREEN
 
     . include/sysinfo.sh  # 输出系统信息
     . include/menu.sh    # 执行菜单脚本
-#    . include/chk_install.sh
-    source /etc/profile 
+    . include/chk_install.sh  # 检查安装状态
 }
 
 # 执行 lnmp 并且输入 lnmp.log

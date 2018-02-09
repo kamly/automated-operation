@@ -228,9 +228,9 @@ mysql_install_boot(){
     # 添加Mysql路径 
     if [[ `sed -n '/export PATH=*.*\/mysql\/bin/p' /etc/profile | wc -l` > 1 ]];then # 避免重复设置
         sed -i '/export PATH=*.*\/mysql\/bin/d' /etc/profile
-        echo " export PATH=~/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin " >> /etc/profile
+        echo "export PATH=~/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin " >> /etc/profile
     else
-        echo " export PATH=~/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin " >> /etc/profile
+        echo "export PATH=~/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin " >> /etc/profile
     fi
     source /etc/profile
 

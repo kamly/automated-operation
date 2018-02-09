@@ -82,8 +82,8 @@ ngx_install
 # 设置 ngx 配置                                                                                                                                           
 ngx_settings(){
   
-    mkdir -p ${www_root_dir}/${www_default} ${www_logs} $ngx_dir/vhost # 创建目录 网站根目录 虚拟目录
-    chown -R ${ngx_user}:${ngx_group} $www_root_dir $www_logs # 创建用户组
+    mkdir -p ${ngx_root_dir}/${ngx_default} ${ngx_logs} $ngx_dir/vhost # 创建目录 网站根目录 虚拟目录
+    chown -R ${ngx_user}:${ngx_group} $ngx_root_dir $ngx_logs # 创建用户组
 
     rm -rf /usr/bin/nginx && ln -s $ngx_dir/sbin/nginx /usr/bin/nginx   # 删除之前可能存在的链接 ，设置软连接
 
@@ -96,7 +96,7 @@ ngx_settings(){
     [ "$os" == "centos" ] && { cp -f ./init.d/nginx-init-centos /etc/init.d/nginx ; chkconfig  --level 2345 nginx on && chkconfig save ; }
     [ "$os" == "ubuntu" ] && { cp -f ./init.d/nginx-init-ubuntu /etc/init.d/nginx && chmod 755 /etc/init.d/nginx ; update-rc.d nginx defaults; }
 
-    echo "############################################Nginx works!!!################################" > ${www_root_dir}/${www_default}/index.html # 将内容输入到index.html页面，我们可以访问测试
+    echo "############################################Nginx works!!!################################" > ${ngx_root_dir}/${ngx_default}/index.html # 将内容输入到index.html页面，我们可以访问测试
 
     # 添加tcp80端口到Ip列表
     centos_iptables(){

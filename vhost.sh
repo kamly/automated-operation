@@ -7,9 +7,9 @@ vhost_add(){
 	echo -e "$YELLOW"
     read -p "Please input your domain name as your htdoc! (example: yunweijilu.com)  " domain_name
 
-    mkdir -p ${www_root_dir}/${domain_name} # 创建目录
+    mkdir -p ${ngx_root_dir}/${domain_name} # 创建目录
 
-    chown -R $ngx_user:$ngx_group ${www_root_dir}/${domain_name} # 改变权限
+    chown -R $ngx_user:$ngx_group ${ngx_root_dir}/${domain_name} # 改变权限
 
     cp -f ./conf/nginx_vhost.conf  ${ngx_dir}/conf/vhost/${domain_name}.conf # 复制配置文件
 
@@ -18,7 +18,7 @@ vhost_add(){
 	nginx -s reload # 重启
 
     echo -e "$GREEN"
-    [ -d ${www_root_dir}/${domain_name} ] && echo -e "Created ${www_root_dir}/${domain_name} success!"
+    [ -d ${ngx_root_dir}/${domain_name} ] && echo -e "Created ${ngx_root_dir}/${domain_name} success!"
 
     [ -f ${ngx_dir}/conf/vhost/${domain_name}.conf ] && echo -e "Created ${ngx_dir}/conf/vhost/${domain_name}.conf success!"
 }
@@ -37,14 +37,14 @@ vhost_del(){
 
 		[ ! -d  ${data_backup_dir} ] && mkdir -p ${data_backup_dir}
 
-		mv ${www_root_dir}/${domain_name} ${data_backup_dir}/${domain_name}_`date +%m%d%H%M` # 移动目录
+		mv ${ngx_root_dir}/${domain_name} ${data_backup_dir}/${domain_name}_`date +%m%d%H%M` # 移动目录
 
 		mv ${ngx_dir}/conf/vhost/${domain_name}.conf ${data_backup_dir}/${domain_name}.conf_`date +%m%d%H%M` # 移动配置文件
 		
         nginx -s reload
 		
         echo -e "$GREEN"
-		[ ! -d ${www_root_dir}/${domain_name} ] && echo -e "Delete ${www_root_dir}/${domain_name} success!"
+		[ ! -d ${ngx_root_dir}/${domain_name} ] && echo -e "Delete ${ngx_root_dir}/${domain_name} success!"
 		[ ! -f ${ngx_dir}/conf/vhost/${domain_name}.conf ] && echo -e "Delete ${ngx_dir}/conf/vhost/${domain_name}.conf success!"
 
 	else
