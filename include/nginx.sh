@@ -54,9 +54,12 @@ install_pcre
 # 安装 ngx
 ngx_install(){
   
-    groupadd $ngx_group
-    useradd  -M -s /sbin/nologin -g $ngx_group $ngx_user # 创建用户  -M 表示不创建用户主目录  -s 表示指定用户所用的shell , 此处为/sbin/nologin，表示不登录  -g 表示指定用户的组名为$ngx_group, 用户名$ngx_user
-
+    # 校验用户是否存在
+    if [[ `grep www /etc/passwd | wc -l` == 0 ]];then
+        groupadd $ngx_group
+        useradd  -M -s /sbin/nologin -g $ngx_group $ngx_user # 创建用户  -M 表示不创建用户主目录  -s 表示指定用户所用的shell , 此处为/sbin/nologin，表示不登录  -g 表示指定用户的组名为$ngx_group, 用户名$ngx_user
+    fi
+    
     pushd $src_dir
     tar zmxf $ngx_tar &&  cd $ngx # tar.gz
     . ./configure --prefix=$ngx_dir \
@@ -82,30 +85,30 @@ ngx_install
 # 设置 ngx 配置                                                                                                                                           
 ngx_settings(){
   
-    mkdir -p ${ngx_root_dir}/${ngx_default} ${ngx_logs} $ngx_dir/vhost # 创建目录 网站根目录 虚拟目录
-    chown -R ${ngx_user}:${ngx_group} $ngx_root_dir $ngx_logs # 创建用户组
+    mkdir -p ${ngx_root_dir}/${ngx_default}  $ngx_dir/vhost ${ngx_logs} # 创建网站根目录 虚拟目录 日志目录
+    chown -R ${ngx_user}:${ngx_group} $ngx_root_dir  $ngx_dir $ngx_logs # 将档案的拥有者加以改变
 
-    rm -rf /usr/bin/nginx && ln -s $ngx_dir/sbin/nginx /usr/bin/nginx   # 删除之前可能存在的链接 ，设置软连接
+    ln -s $ngx_dir/sbin/nginx /usr/bin/nginx   # 删除之前可能存在的链接 ，设置软连接
 
     cp ./conf/nginx.conf $ngx_dir/conf   # 复制配置文件
 
-    rm -rf $src_dir/$ngx $src_dir/$zlib $src_dir/$jemalloc  $src_dir/$openssl   $src_dir/$pcre  # 删除相关文件
+    rm -rf $src_dir/$ngx $src_dir/$zlib $src_dir/$jemalloc  $src_dir/$openssl   $src_dir/$pcre  # 删除刚解压的文件
     
-    # 设置service服务，复制服务脚本到相应位置，赋值权限，使用update-rc.d注册系统服务
+    # 复制 服务脚本,赋值权限，设置 nginx 开机自启服务
     echo -e "$WHITE"
     [ "$os" == "centos" ] && { cp -f ./init.d/nginx-init-centos /etc/init.d/nginx ; chkconfig  --level 2345 nginx on && chkconfig save ; }
-    [ "$os" == "ubuntu" ] && { cp -f ./init.d/nginx-init-ubuntu /etc/init.d/nginx && chmod 755 /etc/init.d/nginx ; update-rc.d nginx defaults; }
+    [ "$os" == "ubuntu" ] && { cp -f ./init.d/nginx-init-ubuntu /etc/init.d/nginx && chmod 755 /etc/init.d/nginx; update-rc.d nginx defaults; }
 
     echo "############################################Nginx works!!!################################" > ${ngx_root_dir}/${ngx_default}/index.html # 将内容输入到index.html页面，我们可以访问测试
 
-    # 添加tcp80端口到Ip列表
+    # 添加 tcp 80 端口到Ip列表
     centos_iptables(){
        if [ "$os" == "centos" ];then
         systemctl stop iptables.service
         iptables -A OUTPUT -p tcp --sport 80 -j ACCEPT
-        systemctl stop firewalld.service 2>/dev/null
-        systemctl disable firewalld.service 2>/dev/null
-        systemctl start iptables.service 2>/dev/null
+        systemctl stop firewalld.service 
+        systemctl disable firewalld.service 
+        systemctl start iptables.service
         service iptables save
         systemctl stop iptables.service
        fi

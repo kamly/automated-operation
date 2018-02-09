@@ -7,7 +7,7 @@ sync_time(){
     if [[ "$os" == "centos" ]];then
         [ "$check_ntpdate" != "1" ] && yum install -y ntp
     elif [[ "$os" == "ubuntu" ]];then
-        apt-get update -y && apt-get install ntpdate -y # 更新源包 安装ntpdate 
+        [ "$check_ntpdate" != "1" ] && apt-get update -y && apt-get install -y ntpdate  # 更新源包 安装ntpdate 
     fi
     ntpdate asia.pool.ntp.org  # 同步asia命令
     hwclock -w # 将系统时钟同步到硬件时钟
