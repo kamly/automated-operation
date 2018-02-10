@@ -64,7 +64,7 @@ ngx_install(){
     fi
 
     # 校验用户是否存在
-    if [[ `grep www /etc/passwd | wc -l` == 0 ]];then
+    if [[ `grep www:x /etc/passwd | wc -l` == 0 ]];then
       useradd  -M -s /sbin/nologin -g $ngx_group $ngx_user # 创建用户  -M 表示不创建用户主目录  -s 表示指定用户所用的shell , 此处为/sbin/nologin，表示不登录  -g 表示指定用户的组名为$ngx_group, 用户名$ngx_user
     fi
     

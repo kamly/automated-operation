@@ -10,7 +10,7 @@ pre_install_php(){
     fi
 
     # 校验用户是否存在
-    if [[ `grep www /etc/passwd | wc -l` == 0 ]];then
+    if [[ `grep www:x /etc/passwd | wc -l` == 0 ]];then
         useradd  -M -s /sbin/nologin -g $php_group $php_user 
     fi
 
