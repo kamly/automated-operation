@@ -99,7 +99,7 @@ uninstall_php(){
 			# 删除 /bin/ /data/logs/xxx /usr/local/xxx
 			rm -rf  /usr/bin/php /data/logs/php $php_dir/${php_version[${php_version_select}]} 
 			
-			cho  "Uninstall php successful!"
+			echo  "Uninstall php successful!"
     	else
      	 echo "No php installed in your system!!"
     	fi 

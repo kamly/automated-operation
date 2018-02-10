@@ -122,6 +122,10 @@ install_php(){
 
         cp -f ./conf/php-fpm.conf ${php_install_dir_use}/etc #  复制 php-fpm.conf 配置文件
 
+        # 日志
+        mkdir -p /data/logs/php
+        chown -R $php_user:$php_group /data/logs/php
+
         # 重启服务
         service php-fpm restart
         
@@ -129,10 +133,6 @@ install_php(){
         rm -rf $src_dir/${php_version[$php_version_select]}
     }
     copy_php_fpm
-
-    # 日志
-    mkdir -p /data/logs/php
-    chown -R $php_user:$php_group /data/logs/php
 
 }
 install_php  
