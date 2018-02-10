@@ -10,15 +10,15 @@ lnmp(){
 
 echo -e "$GREEN
 #####################################################################
-# LNMP is a bash script for the installation of Nginx + PHP + MySQL.#
+#                       Nginx + PHP + MySQL                         #
 #####################################################################"
-
     . include/sysinfo.sh  # 输出系统信息
     . include/menu.sh    # 执行菜单脚本
-    . include/chk_install.sh  # 检查安装状态
+    . include/check_install.sh  # 检查安装状态
 }
 
 # 执行 lnmp 并且输入 lnmp.log
+mkdir log
 lnmp 2>&1 | tee ./log/lnmp.log
 
 echo -e "$WHITE"

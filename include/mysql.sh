@@ -5,7 +5,7 @@
 before_install_mysql(){
 
     # 校验用户组是否存在
-    if [[ `grep mysql /etc/group | wc -l` == 0  ]]
+    if [[ `grep mysql /etc/group | wc -l` == 0 ]];then
         groupadd $mysql_group
     fi
 

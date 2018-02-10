@@ -5,7 +5,7 @@
 pre_install_php(){
 
     # 校验用户组是否存在
-    if [[ `grep www:x /etc/group | wc -l` == 0  ]]
+    if [[ `grep www:x /etc/group | wc -l` == 0 ]];then
         groupadd $php_group
     fi
 

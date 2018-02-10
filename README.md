@@ -37,12 +37,43 @@ ubnutu 16.04
 
 ```shell
 apt-get update # 更新源
-apt-get installl git # 安装git
+apt-get installl -y git # 安装git
 # 拉取代码，建议脚本放在`/data/lnmp`
 mkdir -p /data
-git clone git@github.com:kamly/automated-operation.git
+cd /data
+git clone https://github.com/kamly/automated-operation.git
 ```
+
+## 上传资源
+
+软件安装包存放在[云盘]()。
+
+先下载到本地，然后上传到服务器的`./src/`目录中
 
 ## ./install.sh
 
+执行安装命令 `./install.sh`
+
+1. 是否安装 sync_time 时间同步
+
+
+
+2. 是否安装 nginx nginx服务器
+
+
+
+
+
+3. 是否安装
+
+
+
+
+
+
+
 ## ./uninstall.sh
+
+
+
+
