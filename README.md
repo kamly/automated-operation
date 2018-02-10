@@ -46,7 +46,7 @@ git clone https://github.com/kamly/automated-operation.git
 
 ## 上传资源
 
-软件安装包存放在[云盘]()。
+软件安装包存放在[云盘](https://pan.baidu.com/s/1jJYgAN0)。
 
 先下载到本地，然后上传到服务器的`./src/`目录中
 
@@ -94,6 +94,6 @@ git clone https://github.com/kamly/automated-operation.git
 
 ## ./uninstall.sh
 
-
-
+选择
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1foba8kkyl9j21rg0ycahh.jpg)
 

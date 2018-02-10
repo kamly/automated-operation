@@ -9,13 +9,13 @@
 # Description: nginx server
 ### END INIT INFO
 . /lib/lsb/init-functions
-PROGRAM=/usr/local/nginx/sbin/nginx
+PROGRAM=/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
 
 test -x $PROGRAM || exit 0
 case "$1" in
   start)
      log_begin_msg "Starting Nginx server"
-	$PROGRAM
+	   $PROGRAM
      log_end_msg 0
      ;;
   stop)

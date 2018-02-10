@@ -190,6 +190,8 @@ uninstall_mysql(){
 
 			# 使用ldconfig命令将/usr/local/mysql加入到默认库
 			rm -rf /etc/ld.so.conf.d/mysql.conf
+
+			echo "Uninstall mysql successful!"
 		else
 			echo
 			echo -e "No Mysql Server installed in your system!!"

@@ -139,22 +139,7 @@ ngx_settings(){
     fi
     
     # 启动
-    `${ngx_dir}/sbin/nginx -c ${ngx_dir}/conf/nginx.conf`
-    if [ $? -eq 0 ]; then
-      echo "${ngx_dir}/sbin/nginx -c ${ngx_dir}/conf/nginx.conf success"
-    else
-      echo "${ngx_dir}/sbin/nginx -c ${ngx_dir}/conf/nginx.conf faile"
-    fi
-
-
-    nginx -s reload 
-    if [ $? -eq 0 ]; then
-      echo "nginx -s reload  success"
-    else
-      echo "nginx -s reload  faile"
-    fi  
-
-    service nginx restart
+    service nginx start
     if [ $? -eq 0 ]; then
       echo "service nginx restart  success"
     else
