@@ -94,6 +94,8 @@ git clone https://github.com/kamly/automated-operation.git
 
 ## ./uninstall.sh
 
+执行卸载命令 ./uninstall.sh
+
 选择
 ![](http://ww1.sinaimg.cn/large/8c2e9604gy1foba8kkyl9j21rg0ycahh.jpg)
 
