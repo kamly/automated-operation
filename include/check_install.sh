@@ -2,7 +2,7 @@
 
 # 检查运行状态
 echo -e "${GREEN}---------------------------------------------------------------------"
-for i in  nginx mysql php redis pureftp
+for i in  nginx mysql php redis
 do
     chk_status=`ps aux | grep $i | grep -v grep | wc -l`
     [ "$chk_status" -ne 0 ] && echo "$i is Running!" || echo "$i is NOT Running!"

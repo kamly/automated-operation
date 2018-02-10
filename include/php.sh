@@ -56,10 +56,15 @@ install_libmcrypt
 # 安装 PHP
 install_php(){
  
-    # 使用ldconfig命令将/usr/local/lib加入到默认库
-    if [[ `sed -n '/\/usr\/local\/lib/p' /etc/ld.so.conf.d/usr_local_lib.conf | wc -l` == 0 ]];then
-      echo "/usr/local/lib" >> /etc/ld.so.conf.d/usr_local_lib.conf # 将 /usr/local/lib 输出到 /etc/ld.so.conf.d/usr_local_lib.conf
-      ldconfig # 用户安装了一个新的动态链接库时,就需要手工运行这个命令.
+     # 使用ldconfig命令将/usr/local/mysql加入到默认库
+    if [[ -d /etc/ld.so.conf.d/usr_local_lib.conf ]];then
+        if [[ `sed -n '/\/usr\/local\/lib/p' /etc/ld.so.conf.d/usr_local_lib.conf | wc -l` == 0 ]];then
+          echo "/usr/local/lib" >> /etc/ld.so.conf.d/usr_local_lib.conf # 将 /usr/local/lib 输出到 /etc/ld.so.conf.d/usr_local_lib.conf
+          ldconfig # 用户安装了一个新的动态链接库时,就需要手工运行这个命令.
+        fi
+    else
+        echo "/usr/local/lib" >> /etc/ld.so.conf.d/usr_local_lib.conf # 将 /usr/local/lib 输出到 /etc/ld.so.conf.d/usr_local_lib.conf
+        ldconfig # 用户安装了一个新的动态链接库时,就需要手工运行这个命令.
     fi
 
     pushd $src_dir # 跳转到指定目录，输出堆栈

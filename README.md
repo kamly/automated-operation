@@ -56,20 +56,40 @@ git clone https://github.com/kamly/automated-operation.git
 
 1. 是否安装 sync_time 时间同步
 
+选择，执行之后
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9txkgqrj21w41iykde.jpg )
 
+2. 是否安装 nginx 
 
-2. 是否安装 nginx nginx服务器
+选择
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tx37xmj21w0118gzl.jpg)
 
+执行之后
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tvnci1j21rc0e6wjr.jpg)
 
+3. 是否安装 php
 
+选择
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9txsmuwj21qw0omwo8.jpg)
 
+执行之后
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tvopaaj21rg0hon4j.jpg)
 
-3. 是否安装
+4. 是否安装 redis
 
+选择
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tw2xatj21ri0iy0zm.jpg)
 
+执行之后
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tvnkj8j21ro0h6n0o.jpg)
 
+5. 是否安装 mysql
 
+选择
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9twvj6pj21rk0tsajf.jpg)
 
+执行之后
+![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9txsejij21re14e4cg.jpg)
 
 
 ## ./uninstall.sh

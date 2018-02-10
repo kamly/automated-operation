@@ -245,11 +245,9 @@ mysql_install_boot(){
     mysql_grant
 
     if [ $os == "ubuntu" ];then
-         # 使用ldconfig命令将/usr/local/mysql加入到默认库
-        if [[ `sed -n '/\/usr\/local\/mysql/p' /etc/ld.so.conf.d/mysql.conf | wc -l` == 0 ]];then
-            echo "/usr/local/mysql" >> /etc/ld.so.conf.d/mysql.conf
-            ldconfig # 用户安装了一个新的动态链接库时,就需要手工运行这个命令.
-        fi
+        # 使用ldconfig命令将/usr/local/mysql加入到默认库
+        echo "/usr/local/mysql" >> /etc/ld.so.conf.d/mysql.conf
+        ldconfig # 用户安装了一个新的动态链接库时,就需要手工运行这个命令.
     fi
 }
 
