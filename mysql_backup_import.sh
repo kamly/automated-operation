@@ -25,7 +25,7 @@ mysql_sql_backup(){
 
 # 导入
 mysql_sql_import(){
-    $mysql_install_dir/bin/mysql -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass < ${data_backup_dir}/mysql_$1.sql
+    $mysql_install_dir/bin/mysql -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass < ${data_backup_dir}/mysql_$date_name.sql
 }
 
 
@@ -49,8 +49,13 @@ else
             echo -e "You select backup Mysql Data from $mysql_data"
             mysql_sql_backup
         elif [ $1 == "import" ];then
-            echo -e "You select import Mysql Data to $data_backup_dir"
-            mysql_sql_import
+            if [ -z $2 ];then
+                echo -e "${WHITE} no input date name ${WHITE}"
+            else
+                echo -e "You select import Mysql Data to $data_backup_dir"
+                $date_name=$2
+                mysql_sql_import
+            fi
         else
             echo -e "Usage {$0 backup|import}"
         fi
