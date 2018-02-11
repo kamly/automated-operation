@@ -12,6 +12,8 @@
 ### END INIT INFO
  
 REDISPORT=6379
+
+PASSWORD=root
  
 EXEC=/usr/local/bin/redis-server
  
@@ -41,8 +43,7 @@ case "$1" in
         else
                 PID=$(cat $PIDFILE)
                 echo "Stopping ..."
-                # $CLIEXEC -p $REDISPORT shutdown
-                kill -15 ${PID}
+                $CLIEXEC -p $REDISPORT -a "${PASSWORD}" shutdown
                 while [ -x /proc/${PID} ]
                 do
                     echo "Waiting for Redis to shutdown ..."

@@ -26,7 +26,8 @@ cd ..   # 返回上一层目录
 #  复制 脚本文件, 赋值权限, 修改脚本文件,启动的配置文件依据端口号启动
 cp -rf ./init.d/redis /etc/init.d/redis 
 chmod 755 /etc/init.d/redis
-sed -i "s@REDISPORT=6379@REDISPORT=${redis_port}@g" /etc/init.d/redis  
+sed -i "s@REDISPORT=6379@REDISPORT=${redis_port}@g" /etc/init.d/redis  # 端口
+sed -i "s@PASSWORD=root@PASSWORD=${redis_root_pass}@g" /etc/init.d/redis  # 登录密码
 
 # 后台运行 数据存储的位置 日志存储位置
 mkdir $redis_install_dir/etc 
