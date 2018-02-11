@@ -36,10 +36,11 @@ mkdir -p /data/redis
 mkdir -p /data/logs/redis
 mv -f $redis_install_dir/redis.conf  $redis_install_dir/etc/6379.conf
 
-# 直接修改读取的文件内容，而不是输出到终端 取代
+# 直接修改读取的文件内容
 sed -i 's@daemonize no@daemonize yes@g' $redis_install_dir/etc/6379.conf  # 后台运行
 sed -i 's@dir ./@dir /data/redis@g' $redis_install_dir/etc/6379.conf # 数据存储的位置
 sed -i 's@logfile ""@logfile /data/logs/redis/redis.log@g' $redis_install_dir/etc/6379.conf # 日志存储位置
+sed -i "s@# requirepass foobared@requirepass ${redis_root_pass}@g" $redis_install_dir/etc/6379.conf # 登录密码
 
 # 刷新 脚本内容，开启服务
 if [ $os == "centos" ];then
