@@ -99,9 +99,10 @@ mysql_enter_user="root"
 mysql_user="mysql"
 mysql_group="mysql"
 
-mysql_local="/usr/local/mysql" # 安装路径
+mysql_install_dir="/usr/local/mysql" # 安装路径
 mysql_data="/data/mysql" # mysql存储位置
 mysql_log="/data/logs/mysql"
+mysql_port=3306
 
 
 # mysql版本

@@ -20,7 +20,7 @@ before_install_mysql(){
 cp_errmsg(){ 
     [ ! -d /usr/share/mysql ] && mkdir -p /usr/share/mysql # 创建目录
     if [ ! -f /usr/share/mysql/errmsg.sys ];then
-        cp $mysql_local/share/english/errmsg.sys /usr/share/mysql/
+        cp $mysql_install_dir/share/english/errmsg.sys /usr/share/mysql/
     fi
 }
 
@@ -44,7 +44,7 @@ mysql_install_5.6_bin(){
     
     tar zmxf ${mysql_bin_tar[1]} && rm -rf ${mysql_bin_tar[1]} 
 
-    mv -f ${mysql_bin[1]} $mysql_local
+    mv -f ${mysql_bin[1]} $mysql_install_dir
 
     # cp_errmsg # mysql二进制安装需要errmsg.sys
 
@@ -77,7 +77,7 @@ mysql_install_5.6_cmake(){
     cd ${mysql_sou[1]}
     
     # 编译安装
-    cmake . -DCMAKE_INSTALL_PREFIX=$mysql_local \
+    cmake . -DCMAKE_INSTALL_PREFIX=$mysql_install_dir \
     -DMYSQL_DATADIR=$mysql_data \
     -DSYSCONFDIR=/etc \
     -DWITH_MYISAM_STORAGE_ENGINE=1 \
@@ -121,7 +121,7 @@ mysql_install_5.7_bin(){
     tar zmxf ${mysql_bin_tar[2]} && rm -rf ${mysql_bin_tar[2]} 
 
     # 复制目录+改名目录
-    mv -f ${mysql_bin[2]} $mysql_local
+    mv -f ${mysql_bin[2]} $mysql_install_dir
 
     popd
 }
@@ -150,7 +150,7 @@ mysql_install_5.7_cmake(){
     tar zmxf ${boost_version_tar}
 
     cd ${mysql_sou[2]}
-    cmake . -DCMAKE_INSTALL_PREFIX=$mysql_local \
+    cmake . -DCMAKE_INSTALL_PREFIX=$mysql_install_dir \
     -DMYSQL_DATADIR=$mysql_data \
     -DDOWNLOAD_BOOST=1 \
     -DWITH_BOOST=$src_dir/$boost_version \   
@@ -178,17 +178,17 @@ mysql_install_5.7_cmake(){
 # 设置权限 创建数据库 设置服务 bin添加mysql 开启Mysql 设置密码
 mysql_install_boot(){
     
-    cd $mysql_local
+    cd $mysql_install_dir
 
     mkdir -p $mysql_data $mysql_log # 创建目录
-    chown -R $mysql_user:$mysql_group $mysql_local $mysql_data $mysql_log  # 将档案的拥有者加以改变
+    chown -R $mysql_user:$mysql_group $mysql_install_dir $mysql_data $mysql_log  # 将档案的拥有者加以改变
     
-    chmod 755 $mysql_local/bin/* # 更改命令的权限
+    chmod 755 $mysql_install_dir/bin/* # 更改命令的权限
 
     # 复制 服务脚本,赋值权限
-    cp -rf ${mysql_local}/support-files/mysql.server /etc/init.d/mysqld && chmod 755 /etc/init.d/mysqld
+    cp -rf ${mysql_install_dir}/support-files/mysql.server /etc/init.d/mysqld && chmod 755 /etc/init.d/mysqld
     # 修改 服务脚本 配置
-    sed -i "s:^basedir=.*:basedir=$mysql_local:g" /etc/init.d/mysqld # 更换目录位置
+    sed -i "s:^basedir=.*:basedir=$mysql_install_dir:g" /etc/init.d/mysqld # 更换目录位置
     sed -i "s:^datadir=.*:datadir=$mysql_data:g" /etc/init.d/mysqld # 更换存储位置
 
     cd -
@@ -197,11 +197,13 @@ mysql_install_boot(){
     mkdir /usr/local/mysql/etc
     if [ $mysql_version_select == 1 ];then
         cp -rf ./conf/my56.cnf /usr/local/mysql/etc/my.cnf
-        $mysql_local/scripts/mysql_install_db --basedir=$mysql_local --datadir=$mysql_data --user=$mysql_user
+        $mysql_install_dir/scripts/mysql_install_db --basedir=$mysql_install_dir --datadir=$mysql_data --user=$mysql_user
     elif [ $mysql_version_select == 2 ];then
         cp -rf ./conf/my57.cnf /usr/local/mysql/etc/my.cnf 
-        $mysql_local/bin/mysqld --initialize-insecure --user=$mysql_user --basedir=$mysql_local --datadir=$mysql_data
+        $mysql_install_dir/bin/mysqld --initialize-insecure --user=$mysql_user --basedir=$mysql_install_dir --datadir=$mysql_data
     fi
+    # 修改端口
+    sed -i "s@port = 3306@port ${mysql_port}@g" /usr/local/mysql/etc/my.cnf  # 端口
 
     # 删除默认的配置文件
     rm -rf /etc/mysql
@@ -228,17 +230,17 @@ mysql_install_boot(){
 
     # 修改密码+运行远程连接
     mysql_grant(){
-        $mysql_local/bin/mysqladmin -u$mysql_enter_user password "${mysql_root_pass}"
+        $mysql_install_dir/bin/mysqladmin -u $mysql_enter_user -P ${mysql_port} password "${mysql_root_pass}"
         
         if [ $mysql_version_select == 1 ];then
             cp -f ./conf/grant56.sql ./conf/grant56.bak
             sed -i 's@mysql_pwd@'"${mysql_root_pass}"'@g' ./conf/grant56.sql
-            cat ./conf/grant56.sql | $mysql_local/bin/mysql -u$mysql_enter_user -p${mysql_root_pass}
+            cat ./conf/grant56.sql | $mysql_install_dir/bin/mysql -u$mysql_enter_user -p${mysql_root_pass}
             mv -f ./conf/grant56.bak ./conf/grant56.sql
         elif [ $mysql_version_select == 2 ];then
             cp -f ./conf/grant57.sql ./conf/grant57.bak # 先做一次备份
             sed -i 's@mysql_pwd@'"${mysql_root_pass}"'@g' ./conf/grant57.sql # 修改sql的内容
-            cat ./conf/grant57.sql | $mysql_local/bin/mysql -u$mysql_enter_user -p${mysql_root_pass} # 进入数据库，修改密码
+            cat ./conf/grant57.sql | $mysql_install_dir/bin/mysql -u$mysql_enter_user -p${mysql_root_pass} # 进入数据库，修改密码
             mv -f ./conf/grant57.bak ./conf/grant57.sql # 然后还原
         fi
     }

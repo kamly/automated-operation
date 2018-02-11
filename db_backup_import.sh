@@ -13,7 +13,7 @@ mysql_sql_backup(){
         /etc/init.d/mysqld start
     fi
 
-    $mysql_local/bin/mysqldump -u$mysql_enter_user -p$mysql_root_pass --all-databases > $mysql_data_backup  # 备份数据库
+    $mysql_install_dir/bin/mysqldump -u$mysql_enter_user -p$mysql_root_pass --all-databases > $mysql_data_backup  # 备份数据库
         
     if [[ $? -eq 0  ]];then
         echo -e " \033[32m Backup Mysql Data success! \033[0m"
@@ -24,12 +24,12 @@ mysql_sql_backup(){
 
 # 导入
 mysql_sql_import(){
-    $mysql_local/bin/mysql -u$mysql_enter_user -p$mysql_root_pass < $mysql_data_backup
+    $mysql_install_dir/bin/mysql -u$mysql_enter_user -p$mysql_root_pass < $mysql_data_backup
 }
 
 # ./db_backup_import.sh backup
 # 主菜单
-[ ! -d $mysql_local ] && echo -e "${RED} No Mysql Server in your System!!" && exit 1
+[ ! -d $mysql_install_dir ] && echo -e "${RED} No Mysql Server in your System!!" && exit 1
 if [ -z $1 ];then
 	echo -e "${WHITE}Usage {$0 backup|import}${WHITE}"
 	echo

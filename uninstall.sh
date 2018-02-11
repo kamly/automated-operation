@@ -165,7 +165,7 @@ uninstall_mysql(){
 	read -p "Please Choose Uninstall mysql or Not! ( y,Y/n,N )" uninstall_mysql
 	case $uninstall_mysql in
 	y|Y)
-		if [ -d $mysql_local ];then  # 确认该目录是否存在
+		if [ -d $mysql_install_dir ];then  # 确认该目录是否存在
 		
 			service mysqld stop && sleep 3  # 停止运行
 			# ps aux | grep mysql | grep -v grep | awk '{ print $2 }' | xargs kill -9 

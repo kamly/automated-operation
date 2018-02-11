@@ -5,6 +5,8 @@ default-character-set = utf8mb4
 
 [mysql]
 prompt="mysql(\\u@\\h:\\d)> " # mysql name@host:database >
+no-auto-rehash
+
 
 [mysqld]
 port = 3306
