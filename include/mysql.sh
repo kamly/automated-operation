@@ -200,10 +200,10 @@ mysql_install_boot(){
         $mysql_install_dir/scripts/mysql_install_db --basedir=$mysql_install_dir --datadir=$mysql_data --user=$mysql_user
     elif [ $mysql_version_select == 2 ];then
         cp -rf ./conf/my57.cnf $mysql_install_dir/etc/my.cnf 
+        # 修改配置文件
+        sed -i "s@port = 3306@port ${mysql_port}@g" $mysql_install_dir/etc/my.cnf   # 修改端口
         $mysql_install_dir/bin/mysqld --initialize-insecure --user=$mysql_user --basedir=$mysql_install_dir --datadir=$mysql_data
     fi
-    # 修改配置文件
-    sed -i "s@port = 3306@port ${mysql_port}@g" $mysql_install_dir/etc/my.cnf   # 修改端口
 
     # 删除默认的配置文件
     rm -rf /etc/mysql
@@ -230,7 +230,7 @@ mysql_install_boot(){
 
     # 修改密码+运行远程连接
     mysql_grant(){
-        $mysql_install_dir/bin/mysqladmin -u $mysql_enter_user -P ${mysql_port} password "${mysql_root_pass}"
+        $mysql_install_dir/bin/mysqladmin -u $mysql_enter_user password "${mysql_root_pass}"
         
         if [ $mysql_version_select == 1 ];then
             cp -f ./conf/grant56.sql ./conf/grant56.bak

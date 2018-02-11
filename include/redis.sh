@@ -28,9 +28,6 @@ cp -rf ./init.d/redis /etc/init.d/redis
 chmod 755 /etc/init.d/redis
 sed -i "s@REDISPORT=6379@REDISPORT=${redis_port}@g" /etc/init.d/redis  
 
-# 设置 redis 开机自启服务
-update-rc.d redis defaults 
-
 # 后台运行 数据存储的位置 日志存储位置
 mkdir $redis_install_dir/etc 
 mkdir -p /data/redis 
@@ -43,6 +40,9 @@ sed -i 's@dir ./@dir /data/redis@g' $redis_install_dir/etc/${redis_port}.conf # 
 sed -i 's@logfile ""@logfile /data/logs/redis/redis.log@g' $redis_install_dir/etc/${redis_port}.conf # 日志存储位置
 sed -i "s@# requirepass foobared@requirepass ${redis_root_pass}@g" $redis_install_dir/etc/${redis_port}.conf # 登录密码
 sed -i "s@port 6379@port ${redis_port}@g" $redis_install_dir/etc/${redis_port}.conf # 端口
+
+# 设置 redis 开机自启服务
+update-rc.d redis defaults 
 
 # 刷新 脚本内容，开启服务
 if [ $os == "centos" ];then
