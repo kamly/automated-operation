@@ -230,7 +230,7 @@ mysql_install_boot(){
 
     # 修改密码+运行远程连接
     mysql_grant(){
-        $mysql_install_dir/bin/mysqladmin -u $mysql_enter_user -P${mysql_port} -p "${mysql_root_pass}"
+        $mysql_install_dir/bin/mysqladmin -u $mysql_enter_user -P${mysql_port} password "${mysql_root_pass}"
         
         if [ $mysql_version_select == 1 ];then
             cp -f ./conf/grant56.sql ./conf/grant56.bak
