@@ -29,7 +29,7 @@ redis_backup(){
 
 # 导入
 redis_import(){
-    mv $data_backup_dir/redis_/$backup_name.rdb $redis_data/dump.rdb 
+    mv $data_backup_dir/redis_$backup_name.rdb $redis_data/dump.rdb 
 }
 
 
