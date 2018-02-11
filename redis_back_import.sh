@@ -17,7 +17,7 @@ redis_backup(){
         service redis start # redis
     fi
 
-    $redis_install_dir/bin/redis-cli -h 127.0.0.1 -p ${redis_port} -a "${redis_root_pass}" SAVE # 备份
+    $redis_install_dir/src/redis-cli -h 127.0.0.1 -p ${redis_port} -a "${redis_root_pass}" SAVE # 备份
     mv $redis_data/dump.rdb  $redis_data_backup
         
     if [[ $? == 0 ]];then
