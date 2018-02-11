@@ -201,7 +201,7 @@ mysql_install_boot(){
     elif [ $mysql_version_select == 2 ];then
         cp -rf ./conf/my57.cnf $mysql_install_dir/etc/my.cnf 
         # 修改配置文件
-        sed -i "s@port = 3306@port ${mysql_port}@g" $mysql_install_dir/etc/my.cnf   # 修改端口
+        sed -i "s@port = 3306@port = ${mysql_port}@g" $mysql_install_dir/etc/my.cnf   # 修改端口
         $mysql_install_dir/bin/mysqld --initialize-insecure --user=$mysql_user --basedir=$mysql_install_dir --datadir=$mysql_data
     fi
 
@@ -230,17 +230,17 @@ mysql_install_boot(){
 
     # 修改密码+运行远程连接
     mysql_grant(){
-        $mysql_install_dir/bin/mysqladmin -u $mysql_enter_user password "${mysql_root_pass}"
+        $mysql_install_dir/bin/mysqladmin -u $mysql_enter_user -P${mysql_port} -p "${mysql_root_pass}"
         
         if [ $mysql_version_select == 1 ];then
             cp -f ./conf/grant56.sql ./conf/grant56.bak
             sed -i 's@mysql_pwd@'"${mysql_root_pass}"'@g' ./conf/grant56.sql
-            cat ./conf/grant56.sql | $mysql_install_dir/bin/mysql -u$mysql_enter_user -p${mysql_root_pass}
+            cat ./conf/grant56.sql | $mysql_install_dir/bin/mysql -P${mysql_port} -u$mysql_enter_user -p"${mysql_root_pass}"
             mv -f ./conf/grant56.bak ./conf/grant56.sql
         elif [ $mysql_version_select == 2 ];then
             cp -f ./conf/grant57.sql ./conf/grant57.bak # 先做一次备份
             sed -i 's@mysql_pwd@'"${mysql_root_pass}"'@g' ./conf/grant57.sql # 修改sql的内容
-            cat ./conf/grant57.sql | $mysql_install_dir/bin/mysql -u$mysql_enter_user -p${mysql_root_pass} # 进入数据库，修改密码
+            cat ./conf/grant57.sql | $mysql_install_dir/bin/mysql -P${mysql_port} -u$mysql_enter_user -p"${mysql_root_pass}" # 进入数据库，修改密码
             mv -f ./conf/grant57.bak ./conf/grant57.sql # 然后还原
         fi
     }
