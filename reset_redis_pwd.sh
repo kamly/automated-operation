@@ -15,6 +15,6 @@ reset_redis_pwd(){
 
 	service redis restart
 
-	echo -e "New Redis server root password is\033[41m $redis_root_pass \033[0m"	
+	echo -e "New Redis server root password is \033[41m $redis_root_pass \033[0m"	
 }
 reset_redis_pwd
