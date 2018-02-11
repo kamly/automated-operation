@@ -105,8 +105,6 @@ menu(){
        if [ -d "/usr/local/redis"  ];then
         echo -e "${RED}You had installed Mysql Server!$YELLOW"  
       else
-        echo "You select install Redis."
-        
         #  密码
         echo
         read -p "redis server root password (default:root): " redis_root_pass
@@ -114,6 +112,7 @@ menu(){
         echo  -e "redis root password: ${redis_root_pass}"
         echo  -e "$WHITE"
 
+        echo "You select install Redis."
         . ./include/redis.sh
       fi
     else
