@@ -14,9 +14,10 @@
 
 clear
 
-. ./include/common.sh
+. include/common.sh # 引入常量文件
+. include/public.sh # 引入公用函数
 
-. ./include/sysinfo.sh
+. include/sysinfo.sh # 输出系统信息
 
 # 卸载 Nginx
 uninstall_ngx(){
