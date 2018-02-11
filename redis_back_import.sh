@@ -51,14 +51,14 @@ else
 
         if [ $1 == "backup" ];then
             echo -e "You select backup Redis Data from $redis_data"
-            redis_sql_backup
+            redis_backup
         elif [ $1 == "import" ];then
             if [ -z $2 ];then
                 echo -e "${WHITE} Usage { $0 backup|import 20180211 }${WHITE}"
             else
                 echo -e "You select import Redis Data to $data_backup_dir"
                 backup_name=$2
-                redis_sql_import
+                redis_import
             fi
         else
             echo -e "Usage {$0 backup|import}"
