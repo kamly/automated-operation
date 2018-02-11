@@ -14,7 +14,11 @@ reset_redis_pwd(){
     sed -i "s@requirepass@requirepass ${redis_root_pass}@g" $redis_install_dir/etc/${redis_port}.conf
 
 	service redis restart
-
-	echo -e "New Redis server root password is \033[41m $redis_root_pass \033[0m"	
+    
+    if [ $? == 0 ]; then
+		echo -e "New Redis server root password is \033[41m $redis_root_pass \033[0m"		
+	else
+		echo -e "fail"	
+	fi
 }
 reset_redis_pwd

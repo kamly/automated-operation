@@ -17,7 +17,11 @@ reset_mysql_pwd(){
 
 	${mysql_install_dir}/bin/mysqladmin -u${mysql_enter_user} -P${mysql_port} -p"${mysql_old_pass}" password "${mysql_root_pass}"
 
-	echo -e "New Mysql server root password is \033[41m $mysql_root_pass \033[0m"	
+	if [ $? == 0 ]; then
+		echo -e "New Mysql server root password is \033[41m $mysql_root_pass \033[0m"	
+	else
+		echo -e "fail"	
+	fi
 }
 reset_mysql_pwd
 
