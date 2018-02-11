@@ -68,7 +68,8 @@ ngx_tar="nginx-1.12.0.tar.gz"
 php_user="www"
 php_group="www"
 
-php_dir="/usr/local/php"
+php_install_dir="/usr/local/php"
+php_fpm_port=9000  # 默认端口
 
 php_version[1]="php-5.6.30"
 php_version[2]="php-7.1.6"

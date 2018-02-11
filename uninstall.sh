@@ -82,7 +82,7 @@ uninstall_php(){
 			fi  
 		done
 
-    	if [ -d $php_dir/${php_version[${php_version_select}]} ];then # 确认该目录是否存在
+    	if [ -d $php_install_dir/${php_version[${php_version_select}]} ];then # 确认该目录是否存在
      		
 			service php-fpm stop && sleep 3  # 方法1 停止运行
 			# ps -ef | grep php-fpm | grep -v grep | awk  '{print $2}' | xargs kill -9 # 方法2 停止运行
@@ -97,7 +97,7 @@ uninstall_php(){
 			rm -rf  /etc/init.d/php-fpm # 删除服务脚本
 
 			# 删除 /bin/ /data/logs/xxx /usr/local/xxx
-			rm -rf  /usr/bin/php /data/logs/php $php_dir/${php_version[${php_version_select}]} 
+			rm -rf  /usr/bin/php /data/logs/php $php_install_dir/${php_version[${php_version_select}]} 
 			
 			echo  "Uninstall php successful!"
     	else

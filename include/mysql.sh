@@ -194,16 +194,16 @@ mysql_install_boot(){
     cd -
 
     # 复制配置文件，初始化数据库
-    mkdir /usr/local/mysql/etc
+    mkdir $mysql_install_dir/etc
     if [ $mysql_version_select == 1 ];then
-        cp -rf ./conf/my56.cnf /usr/local/mysql/etc/my.cnf
+        cp -rf ./conf/my56.cnf $mysql_install_dir/etc/my.cnf
         $mysql_install_dir/scripts/mysql_install_db --basedir=$mysql_install_dir --datadir=$mysql_data --user=$mysql_user
     elif [ $mysql_version_select == 2 ];then
-        cp -rf ./conf/my57.cnf /usr/local/mysql/etc/my.cnf 
+        cp -rf ./conf/my57.cnf $mysql_install_dir/etc/my.cnf 
         $mysql_install_dir/bin/mysqld --initialize-insecure --user=$mysql_user --basedir=$mysql_install_dir --datadir=$mysql_data
     fi
-    # 修改端口
-    sed -i "s@port = 3306@port ${mysql_port}@g" /usr/local/mysql/etc/my.cnf  # 端口
+    # 修改配置文件
+    sed -i "s@port = 3306@port ${mysql_port}@g" $mysql_install_dir/etc/my.cnf   # 修改端口
 
     # 删除默认的配置文件
     rm -rf /etc/mysql

@@ -77,7 +77,7 @@ menu(){
         fi  
         done
 
-        if [[ -d $php_dir/${php_version[${php_version_select}]} ]];then
+        if [[ -d $php_install_dir/${php_version[${php_version_select}]} ]];then
           echo -e "$RED You had installed PHP!"
           echo -e "$YELLOW"
         else

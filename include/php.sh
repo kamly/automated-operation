@@ -69,7 +69,7 @@ install_php(){
 
     pushd $src_dir # 跳转到指定目录，输出堆栈
 
-    php_install_dir_use="${php_dir}/${php_version[${php_version_select}]}" # php 安装目录
+    php_install_dir_use="${php_install_dir}/${php_version[${php_version_select}]}" # php 安装目录
 
     tar xjvf ${php_bz[${php_version_select}]} && cd ${php_version[${php_version_select}]} # 解压
 
@@ -126,6 +126,8 @@ install_php(){
     copy_php_fpm(){
 
         cp -f ./conf/php-fpm.conf ${php_install_dir_use}/etc #  复制 php-fpm.conf 配置文件
+        # 修改配置文件
+        sed -i "s@listen = 127.0.0.1:9000@listen = 127.0.0.1:${php_fpm_port}@g" ${php_install_dir_use}/etc/php-fpm.conf  # 修改端口
 
         # 日志
         mkdir -p /data/logs/php
