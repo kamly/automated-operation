@@ -75,7 +75,7 @@ ngx_install(){
     
     pushd $src_dir
     tar zmxf $ngx_tar &&  cd $ngx # tar.gz
-    . ./configure --prefix=$ngx_dir \
+    . ./configure --prefix=$ngx_install_dir \
     --user=$ngx_user \
     --group=$ngx_group \
     --with-http_stub_status_module \
@@ -98,12 +98,15 @@ ngx_install
 # 设置 ngx 配置                                                                                                                                           
 ngx_settings(){
   
-    mkdir -p ${ngx_root_dir}/${ngx_default}  $ngx_dir/vhost ${ngx_logs} # 创建网站根目录 虚拟目录 日志目录
-    chown -R ${ngx_user}:${ngx_group} $ngx_root_dir $ngx_dir $ngx_logs # 将档案的拥有者加以改变
+    mkdir -p ${ngx_root_dir}/${ngx_default}  $ngx_install_dir/vhost ${ngx_logs} # 创建网站根目录 虚拟目录 日志目录
+    chown -R ${ngx_user}:${ngx_group} $ngx_root_dir $ngx_install_dir $ngx_logs # 将档案的拥有者加以改变
 
-    ln -s $ngx_dir/sbin/nginx /usr/bin/nginx   # 设置软连接
+    ln -s $ngx_install_dir/sbin/nginx /usr/bin/nginx   # 设置软连接
 
-    cp ./conf/nginx.conf $ngx_dir/conf   # 复制配置文件
+    cp ./conf/nginx.conf $ngx_install_dir/conf   # 复制配置文件
+    # 修改配置文件
+    sed -i "s@fastcgi_pass 127.0.0.1:9000;@fastcgi_pass 127.0.0.1:${php_fpm_port};@g" $ngx_install_dir/conf/nginx.conf  # 修改php-fpm端口
+    sed -i "s@listen 80;@listen ${ngx_port};@g" $ngx_install_dir/conf/nginx.conf  # 修改server端口
 
     rm -rf $src_dir/$ngx $src_dir/$zlib $src_dir/$jemalloc  $src_dir/$openssl   $src_dir/$pcre  # 删除刚解压的文件
     
@@ -131,11 +134,11 @@ ngx_settings(){
     [ "$os" == "ubuntu" ] && service ufw stop # 防火墙停止
 
     # 测试配置文件
-    `${ngx_dir}/sbin/nginx -t -c ${ngx_dir}/conf/nginx.conf`
+    `${ngx_install_dir}/sbin/nginx -t -c ${ngx_install_dir}/conf/nginx.conf`
     if [ $? -eq 0 ]; then
-      echo "${ngx_dir}/conf/nginx.conf success"
+      echo "${ngx_install_dir}/conf/nginx.conf success"
     else
-      echo "${ngx_dir}/conf/nginx.conf faile"
+      echo "${ngx_install_dir}/conf/nginx.conf faile"
     fi
     
     # 启动

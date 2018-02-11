@@ -42,10 +42,11 @@ src_dir=`pwd`/src
 ngx_user="www"
 ngx_group="www"
 
-ngx_dir="/usr/local/nginx"
+ngx_install_dir="/usr/local/nginx"
 ngx_root_dir="/data/www/"
 ngx_default="default"
 ngx_logs="/data/logs/nginx"
+ngx_port=80
 
 jemalloc='jemalloc-3.6.0'
 jemalloc_tar='jemalloc-3.6.0.tar.bz2'

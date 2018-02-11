@@ -11,16 +11,16 @@ vhost_add(){
 
     chown -R $ngx_user:$ngx_group ${ngx_root_dir}/${domain_name} # 改变权限
 
-    cp -f ./conf/nginx_vhost.conf  ${ngx_dir}/conf/vhost/${domain_name}.conf # 复制配置文件
+    cp -f ./conf/nginx_vhost.conf  ${ngx_install_dir}/conf/vhost/${domain_name}.conf # 复制配置文件
 
-    sed -i "s/domain/${domain_name}/g" ${ngx_dir}/conf/vhost/${domain_name}.conf # 替换domain词语
+    sed -i "s/domain/${domain_name}/g" ${ngx_install_dir}/conf/vhost/${domain_name}.conf # 替换domain词语
 
 	nginx -s reload # 重启
 
     echo -e "$GREEN"
     [ -d ${ngx_root_dir}/${domain_name} ] && echo -e "Created ${ngx_root_dir}/${domain_name} success!"
 
-    [ -f ${ngx_dir}/conf/vhost/${domain_name}.conf ] && echo -e "Created ${ngx_dir}/conf/vhost/${domain_name}.conf success!"
+    [ -f ${ngx_install_dir}/conf/vhost/${domain_name}.conf ] && echo -e "Created ${ngx_install_dir}/conf/vhost/${domain_name}.conf success!"
 }
 
 # 减少 vhost , 缺少检查
@@ -33,19 +33,19 @@ vhost_del(){
 		echo
 		echo -e "${WHITE}You did not intput anything."
 
-	elif [  -f ${ngx_dir}/conf/vhost/${domain_name}.conf ];then
+	elif [  -f ${ngx_install_dir}/conf/vhost/${domain_name}.conf ];then
 
 		[ ! -d  ${data_backup_dir} ] && mkdir -p ${data_backup_dir}
 
 		mv ${ngx_root_dir}/${domain_name} ${data_backup_dir}/${domain_name}_`date +%m%d%H%M` # 移动目录
 
-		mv ${ngx_dir}/conf/vhost/${domain_name}.conf ${data_backup_dir}/${domain_name}.conf_`date +%m%d%H%M` # 移动配置文件
+		mv ${ngx_install_dir}/conf/vhost/${domain_name}.conf ${data_backup_dir}/${domain_name}.conf_`date +%m%d%H%M` # 移动配置文件
 		
         nginx -s reload
 		
         echo -e "$GREEN"
 		[ ! -d ${ngx_root_dir}/${domain_name} ] && echo -e "Delete ${ngx_root_dir}/${domain_name} success!"
-		[ ! -f ${ngx_dir}/conf/vhost/${domain_name}.conf ] && echo -e "Delete ${ngx_dir}/conf/vhost/${domain_name}.conf success!"
+		[ ! -f ${ngx_install_dir}/conf/vhost/${domain_name}.conf ] && echo -e "Delete ${ngx_install_dir}/conf/vhost/${domain_name}.conf success!"
 
 	else
 
