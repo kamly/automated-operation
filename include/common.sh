@@ -90,6 +90,7 @@ redis_install_dir="/usr/local/redis" # 安装路径
 redis_gz="redis-4.0.0.tar.gz"  # 压缩包
 redis_version="redis-4.0.0" # 版本
 
+redis_port=6379 # 默认端口
 
 # 默认 mysql
 
