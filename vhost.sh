@@ -57,8 +57,6 @@ vhost_del(){
 # ./vhost.sh add 
 # ./vhost.sh del
 if [[ -d "/usr/local/nginx" ]];then
-	echo -e "${RED}Please check if you had installed Nginx!!"
-else
 	if	[[ "$1" == "add" ]];then
 		echo
 		vhost_add
@@ -70,5 +68,7 @@ else
 		echo
 		echo -e "${WHITE}Usage: $0 {add|del}"
 	fi
+else
+	echo -e "${RED}Please check if you had installed Nginx!!"
 fi
 
