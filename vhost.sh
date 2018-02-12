@@ -23,12 +23,13 @@ vhost_add(){
     echo -e "$GREEN"
     echo -e "Created ${ngx_root_dir}/${domain_name} success!"
 	echo -e "Created ${ngx_install_dir}/conf/vhost/${domain_name}.conf success!"
+	echo -e "Be careful your nginx server port and php-fpm port !!!"
 }
 
 # 减少 vhost 
 vhost_del(){
 	echo -e "${YELLOW}"
-	read -p "Please input your domain name which you want delete! (example: yunweijilu.com)  " domain_name
+	read -p "Please input your domain name which you want delete! (example: charmingkamly.cn)  " domain_name
 
 	if [  -z "$domain_name" ];then
 		echo
