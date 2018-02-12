@@ -26,6 +26,12 @@ mysql_sql_backup(){
 # 导入
 mysql_sql_import(){
     $mysql_install_dir/bin/mysql -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass < ${data_backup_dir}/mysql_$backup_name.sql
+
+    if [[ $? == 0 ]];then
+        echo -e " \033[32m import mysql Data success! \033[0m"
+    else
+        echo -e " \033[32m import failed, pls check... \033[0m " 
+    fi
 }
 
 

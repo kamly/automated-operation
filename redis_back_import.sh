@@ -8,10 +8,7 @@
 # 备份
 redis_backup(){
 
-    if [[ ! -d ${data_backup_dir} ]] ; then
-        mkdir -p $data_backup_dir
-        echo -e " \033[32m Creat $data_backup_dir Successful! \033[0m"
-    fi
+    check_backup_dir
 
     if [[ `ps aux | grep redis|grep -v grep|wc -l` == 0 ]];then
         service redis start # redis
@@ -29,7 +26,13 @@ redis_backup(){
 
 # 导入
 redis_import(){
-    mv $data_backup_dir/redis_$backup_name.rdb $redis_data/dump.rdb 
+    cp $data_backup_dir/redis_$backup_name.rdb $redis_data/dump.rdb 
+
+    if [[ $? == 0 ]];then
+        echo -e " \033[32m import redis Data success! \033[0m"
+    else
+        echo -e " \033[32m import failed, pls check... \033[0m " 
+    fi
 }
 
 

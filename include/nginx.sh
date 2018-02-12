@@ -98,8 +98,8 @@ ngx_install
 # 设置 ngx 配置                                                                                                                                           
 ngx_settings(){
   
-    mkdir -p ${ngx_root_dir}/${ngx_default}  $ngx_install_dir/vhost ${ngx_logs} # 创建网站根目录 虚拟目录 日志目录
-    chown -R ${ngx_user}:${ngx_group} $ngx_root_dir $ngx_install_dir $ngx_logs # 将档案的拥有者加以改变
+    mkdir -p ${ngx_root_dir}/${ngx_default}  $ngx_install_dir/conf/vhost ${ngx_logs} # 创建网站根目录 虚拟目录 日志目录
+    chown -R ${ngx_user}:${ngx_group} $ngx_root_dir $ngx_logs # 将档案的拥有者加以改变
 
     ln -s $ngx_install_dir/sbin/nginx /usr/bin/nginx   # 设置软连接
 
