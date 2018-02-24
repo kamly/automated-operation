@@ -24,10 +24,12 @@ echo "[所有定时命令打印到]: {$crontab_file}"
 
 if grep -q "${crontab_command}" "${crontab_file}"
 then
-    echo "命令执行"
-elif grep -q "#\+${crontab_command}" "${crontab_file}"
-then
-        echo "命令取消"
+    if grep -q "#\+${crontab_command}" "${crontab_file}"
+    then
+        echo "----命令已经取消"
+    else
+        echo "----命令正在执行"
+    fi
 else
     echo "命令没有发现在 ${crontab_file}"
 fi
