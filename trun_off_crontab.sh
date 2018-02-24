@@ -1,11 +1,10 @@
-# ./turn_off_crontab.sh "30 8 * * * /home/kamly/lnmp/start_daily_check.sh" >> /home/kamly/lnmp/turn_off_crontab.log 
+# ./turn_off_crontab.sh "30 8 * * * /home/kamly/lnmp/start_daily_check.sh"
 
 dir="$( cd "$( dirname $0  )" && pwd  )"
 echo "[获取turn_on_crontab.sh的路径]: {$dir}"
 
 crontab_file="${dir}/crontab.cur" # crontab.cur 暂时存储 crontab 所有命令文件
 echo "[暂时存储所有定时命令的文件存放在]: {$crontab_file}"
-
 
 crontab_command_raw=${1}
 echo "[取消命令预览]: ${crontab_command_raw}" # 取消执行定时任务 
@@ -29,6 +28,8 @@ fi
 echo "[执行到crontab,开始]"
 crontab "${crontab_file}"
 echo "[执行到crontab,结束]"
+
+rm -rf ${crontab_file} # 删除 暂时存储
 
 echo "[打印所有定时命令]"
 crontab -l -u root

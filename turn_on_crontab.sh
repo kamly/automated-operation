@@ -1,7 +1,5 @@
 
-# ./turn_on_crontab.sh "30 8 * * * /home/kamly/lnmp/start_daily_check.sh" >> /home/kamly/lnmp/turn_on_crontab.log 
-# 这个脚本的内容输出到 turn_on_crontab.log 
-# 日志可以查看之前写的爬虫
+# ./turn_on_crontab.sh "30 8 * * * /home/kamly/lnmp/start_daily_check.sh"
 
 #  crontab -l -u root  需要加上 -u root
 
@@ -28,12 +26,14 @@ then
     eval "${sed_str}" # 执行命令
 else
     echo "要添加的命令不存在 ${crontab_file}"
-    echo "${crontab_command_raw}" >> ${crontab_file} # 添加
+    echo "${crontab_command_raw}" >> ${crontab_file} # 追添加
 fi
 
 echo "[执行到crontab,开始]"
 crontab "${crontab_file}"
 echo "[执行到crontab,结束]"
+
+rm -rf ${crontab_file} # 删除 暂时存储
 
 echo "[打印所有定时命令]"
 crontab -l -u root
