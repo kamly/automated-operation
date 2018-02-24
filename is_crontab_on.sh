@@ -1,7 +1,7 @@
 # ./is_crontab_on.sh "30 8 * * * /home/kamly/lnmp/start_daily_check.sh" >> /home/kamly/lnmp/is_crontab_on.log
 
 dir="$( cd "$( dirname $0  )" && pwd  )"
-echo "[turn_on_crontab.sh的路径]: {$dir}"
+echo "[is_crontab_on.sh的路径]: {$dir}"
 
 
 crontab_file="${dir}/crontab.cur" # 暂时存储 crontab 所有命令文件
@@ -35,6 +35,7 @@ else
     echo 2;
 fi
 
+rm -rf $crontab_file # 删除 暂时存储
 
 echo "任务完成"
 
