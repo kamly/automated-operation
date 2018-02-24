@@ -11,7 +11,7 @@ before_install_mysql(){
 
     # 校验用户是否存在
     if [[ `grep mysql /etc/passwd | wc -l` == 0 ]];then
-        useradd -r -g $mysql_group -s /bin/false $mysql_user
+        useradd -r -g $mysql_group -s /bin/false $mysql_user # 创建用户 -r 系统用户(不会为用户创建一个主目录,除非加上-m) -s 指定用户登入后所使用的 -g 用户组
     fi
 }
 

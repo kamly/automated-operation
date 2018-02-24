@@ -179,5 +179,13 @@ menu(){
     else
       echo "Not install or input wrong value for Mysql!"
     fi
+  
+########### 是否安装 elkf
+
+
+
+
+
+
 }
 menu
