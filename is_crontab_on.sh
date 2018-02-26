@@ -24,7 +24,7 @@ echo "[所有定时命令打印到]: {$crontab_file}"
 
 if grep -q "${crontab_command}" "${crontab_file}"
 then
-    if grep -q "\^#\.\*\?${crontab_command}" "${crontab_file}"
+    if grep -q "#.*${crontab_command}" "${crontab_file}"
     then
         echo "----命令已经取消"
     else
