@@ -1,8 +1,5 @@
 #!/bin/bash                                                                                                                                               
 
-# 记录开始时间，时间戳
-time_begin=$(date +%s)   
-
 # 获取ip
 get_ip(){
     ip=$(ip addr | grep "scope global" | awk  '{ print $2 }' | cut -d"/" -f 1)

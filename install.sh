@@ -8,16 +8,18 @@ clear
 # lnmp 主要进程          
 lnmp(){ 
 
+cmd_begin
+
 echo -e "$GREEN
 #####################################################################
-#                       Nginx + PHP + MySQL                         #
+#               Nginx + PHP + MySQL + Redis + ELKF                  #
 #####################################################################"
     . include/sysinfo.sh  # 输出系统信息
     . include/menu.sh    # 执行菜单脚本
     . include/check_install.sh  # 检查安装状态
 }
 
-# 执行 lnmp 并且输入 lnmp.log
+# 执行 lnmp 并且 将所有输入记录到lnmp.log
 mkdir log
 lnmp 2>&1 | tee ./log/lnmp.log
 

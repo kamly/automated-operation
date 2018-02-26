@@ -12,14 +12,7 @@ done
 
 
 # 打印执行时间
-echo -e "\033[0m"
-if [[ $sync_time_yn =~ ^[y,Y]$ ]] || [[ $repo_yn =~ ^[y,Y]$ ]] || [[ $install_ngx_yn =~ ^[y,Y]$ ]] || [[ $install_mysql_yn =~ ^[y,Y]$ ]] || [[ $install_php_yn =~ ^[y,Y]$ ]] || [[ $install_redis_yn =~ ^[y,Y]$ ]];then
-	time_end=`date +%s`
-	((time_use=${time_end}-${time_begin}))
-	((time_use_m=${time_use}/60))
-	((time_use_s=${time_use}%60))
-	echo "Install use ${time_use_m}Min ${time_use_s}Sec "
-fi
+cmd_end
 
 # 在centos中关闭防火墙
 stop_firewall(){
