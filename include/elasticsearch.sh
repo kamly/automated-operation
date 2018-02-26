@@ -14,6 +14,8 @@ if [[ `grep elasticsearch /etc/passwd | wc -l` == 0 ]];then
     useradd $elasticsearch_user -g $elasticsearch_group
 fi
 
+pushd $src_dir # 切换
+
 # 解压
 tar -zxvf $elasticsearch_gz
 
@@ -36,6 +38,8 @@ mkdir $elasticsearch_data  $elasticsearch_log
 
 # 赋值权限
 chown -R $elasticsearch_user:$elasticsearch_group  $elasticsearch_data  $elasticsearch_log
+
+popd  # 切换
 
 # 需要自己切换到 elasticsearch 用户进行测试
 
