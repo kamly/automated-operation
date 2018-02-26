@@ -37,7 +37,7 @@ sed -i "s@-Xmx1g@-Xmx128M@g" $elasticsearch_install_dir/config/jvm.options
 mkdir $elasticsearch_data  $elasticsearch_log
 
 # 赋值权限
-chown -R $elasticsearch_user:$elasticsearch_group  $elasticsearch_data  $elasticsearch_log
+chown -R $elasticsearch_user:$elasticsearch_group  $elasticsearch_install_dir $elasticsearch_data  $elasticsearch_log
 
 popd  # 切换
 
