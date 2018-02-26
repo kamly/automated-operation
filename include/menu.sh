@@ -47,6 +47,8 @@ menu(){
       else
          . ./include/nginx.sh  
       fi
+    else
+       echo "Not install or input wrong value for Nginx!"
     fi
 
 
@@ -85,7 +87,7 @@ menu(){
           . ./include/php.sh
         fi
     else
-       echo "Not install or input wrong value for Php!"
+        echo "Not install or input wrong value for Php!"
     fi
 
 
@@ -116,8 +118,8 @@ menu(){
         . ./include/redis.sh
       fi
     else
-      echo "Not install or input wrong value for Redis!" 
-    fi  
+        echo "Not install or input wrong value for Redis!"
+    fi
 
 ########### 是否安装 mysql
 
@@ -136,7 +138,6 @@ menu(){
       if [ -d "/usr/local/mysql"  ];then
         echo -e "${RED}You had installed Mysql Server!$YELLOW"  
       else
-
         # 安装版本
         echo -e "Please choose MYSQL version:
         $RED 1)$WHITE ${mysql_version[1]} $GREEN( Default );
@@ -146,7 +147,6 @@ menu(){
 
         mysql_version_select=${mysql_version_select:=1} # 提供默认        
         if [[ "$mysql_version_select" == 1 || "$mysql_version_select" == 2 ]];then
-         
           # 安装方式
           echo
           echo  -e "${YELLOW}How to install Mysql Server? :
@@ -163,22 +163,22 @@ menu(){
           echo  -e "Mysql root password: ${mysql_root_pass}"
           echo  -e "$WHITE"
 
+          # 安装 mysql
+          if [ "$mysql_version_select" == 1 ];then
+              echo "You select install ${mysql_version[1]}"
+              . ./include/mysql-5.6.sh
+          elif  [ "$mysql_version_select" == 2 ];then
+              echo "You select install ${mysql_version[2]}"
+              . ./include/mysql-5.7.sh
+          fi 
         fi
-
       fi
-  
-    fi
-
-    # 安装 mysql
-    if [ "$mysql_version_select" == 1 ];then
-            echo "You select install ${mysql_version[1]}"
-            . ./include/mysql-5.6.sh
-    elif  [ "$mysql_version_select" == 2 ];then
-            echo "You select install ${mysql_version[2]}"
-             . ./include/mysql-5.7.sh
     else
       echo "Not install or input wrong value for Mysql!"
     fi
+
+    
+     
   
 ########### 是否安装 elkf
 
