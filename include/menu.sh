@@ -180,10 +180,28 @@ menu(){
     
      
   
-########### 是否安装 elkf
+########### 是否安装 elasticsearch
+
+  while :;do echo
+      read -p "Do you want Install Elasticsearch?(y/n)" install_elasticsearch_yn
+      if [[ ! $install_elasticsearch_yn =~ ^[y,Y,n,N]$ ]];then
+        echo -e "\033[0mPlease input y/Y or n/N\033[33m"
+      else
+        break
+      fi  
+  done
 
 
-
+  if [[ "$install_elasticsearch_yn" == "y" || "$install_elasticsearch_yn" == "Y" ]];then
+    if [[ -d "/usr/local/elasticsearch" ]];then
+      echo -e "$RED You had installed elasticsearch!"
+      echo -e "$YELLOW"
+    else
+        . ./include/elasticsearch.sh  
+    fi
+  else
+      echo "Not install or input wrong value for Elasticsearch!"
+  fi
 
 
 

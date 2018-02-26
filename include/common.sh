@@ -140,13 +140,30 @@ boost_version_tar="${boost_version}.tar.gz"
 
 
 
-# # 数据备份 update的时候使用
+# 数据备份 update的时候使用
 data_backup_dir="/data/backup" # 备份目录
 
 mysql_data_backup="${data_backup_dir}/mysql_`date +%Y%m%d`.sql" # 旧的mysql的数据 
 
 redis_data_backup="${data_backup_dir}/redis_`date +%Y%m%d`.rdb" # 旧的redis的数据 
 
+
+
+# elasticsearch
+# https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.1.tar.gz  下载地址
+
+elasticsearch_user="elasticsearch"
+elasticsearch_group="elasticsearch"
+
+elasticsearch_install_dir="/usr/local/elasticsearch"
+elasticsearch_port=9200  # 默认端口
+
+
+elasticsearch_gz="elasticsearch-6.2.1.tar.gz"  # 压缩包
+elasticsearch_version="elasticsearch-6.2.1" # 版本
+
+elasticsearch_data="/data/elasticsearch"
+elasticsearch_log="/data/logs/elasticsearch"
 
 
 
