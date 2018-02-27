@@ -169,11 +169,11 @@ elasticsearch_log="/data/logs/elasticsearch"
 # kibana
 # https://artifacts.elastic.co/downloads/kibana/kibana-6.2.2-linux-x86_64.tar.gz  下载地址
 
-kibana_install_dir="/usr/local/elasticsearch"
+kibana_install_dir="/usr/local/kibana"
 kibana_port=5601  # 默认端口
 
-kibana_gz="kibana-6.2.2.tar.gz"  # 压缩包
-kibana_version="kibana-6.2.2" # 版本
+kibana_gz="kibana-6.2.2-linux-x86_64.tar.gz"  # 压缩包
+kibana_version="kibana-6.2.2-linux-x86_64" # 版本
 
 
 
