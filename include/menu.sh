@@ -251,5 +251,28 @@ menu(){
       echo "Not install or input wrong value for Filebeat!"
   fi
 
+########### 是否安装 logstash
+
+  while :;do echo
+      read -p "Do you want Install Logstash?(y/n)" install_logstash_yn
+      if [[ ! $install_logstash_yn =~ ^[y,Y,n,N]$ ]];then
+        echo -e "\033[0mPlease input y/Y or n/N\033[33m"
+      else
+        break
+      fi  
+  done
+
+
+  if [[ "$install_logstash_yn" == "y" || "$install_logstash_yn" == "Y" ]];then
+    if [[ -d "/usr/local/logstash" ]];then
+      echo -e "$RED You had installed logstash!"
+      echo -e "$YELLOW"
+    else
+        . ./include/logstash.sh  
+    fi
+  else
+      echo "Not install or input wrong value for Logstash!"
+  fi
+
 }
 menu
