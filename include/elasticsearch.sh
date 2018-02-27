@@ -24,13 +24,13 @@ mv $elasticsearch_version $elasticsearch_install_dir
 
 
 # 修改配置文件
-sed -i "s@#path.data: /path/to/data@path.data: ${elasticsearch_data}@g" $elasticsearch_install_dir/config/elasticsearch.yml  
-sed -i "s@#path.logs: /path/to/logs@path.logs: ${elasticsearch_log}@g" $elasticsearch_install_dir/config/elasticsearch.yml  
-sed -i "s@#bootstrap.memory_lock: true@bootstrap.memory_lock: true@g" $elasticsearch_install_dir/config/elasticsearch.yml  
-sed -i "s@#http.port: 9200@http.port: ${elasticsearch_port}@g" $elasticsearch_install_dir/config/elasticsearch.yml  
+sed -i "s@#path.data: /path/to/data@path.data: ${elasticsearch_data}@g" $elasticsearch_install_dir/config/elasticsearch.yml  # 路径
+sed -i "s@#path.logs: /path/to/logs@path.logs: ${elasticsearch_log}@g" $elasticsearch_install_dir/config/elasticsearch.yml  # 日志
+sed -i "s@#bootstrap.memory_lock: true@bootstrap.memory_lock: true@g" $elasticsearch_install_dir/config/elasticsearch.yml  # 关闭swap
+sed -i "s@#http.port: 9200@http.port: ${elasticsearch_port}@g" $elasticsearch_install_dir/config/elasticsearch.yml  # 端口
 
-sed -i "s@-Xms1g@-Xms128M@g" $elasticsearch_install_dir/config/jvm.options
-sed -i "s@-Xmx1g@-Xmx128M@g" $elasticsearch_install_dir/config/jvm.options
+sed -i "s@-Xms1g@-Xms128M@g" $elasticsearch_install_dir/config/jvm.options # 内存
+sed -i "s@-Xmx1g@-Xmx128M@g" $elasticsearch_install_dir/config/jvm.options # 内存
 
 
 # 创建目录

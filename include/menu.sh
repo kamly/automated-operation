@@ -227,5 +227,29 @@ menu(){
       echo "Not install or input wrong value for Kibana!"
   fi
 
+    
+########### 是否安装 filebeat
+
+  while :;do echo
+      read -p "Do you want Install Filebeat?(y/n)" install_filebeat_yn
+      if [[ ! $install_filebeat_yn =~ ^[y,Y,n,N]$ ]];then
+        echo -e "\033[0mPlease input y/Y or n/N\033[33m"
+      else
+        break
+      fi  
+  done
+
+
+  if [[ "$install_filebeat_yn" == "y" || "$install_filebeat_yn" == "Y" ]];then
+    if [[ -d "/usr/local/filebeat" ]];then
+      echo -e "$RED You had installed filebeat!"
+      echo -e "$YELLOW"
+    else
+        . ./include/filebeat.sh  
+    fi
+  else
+      echo "Not install or input wrong value for Filebeat!"
+  fi
+
 }
 menu
