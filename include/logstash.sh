@@ -10,6 +10,10 @@ mv $logstash_version $logstash_install_dir
 
 popd  # 切换
 
-# 只进行安装，配置文件自行配置
+# 复制配置文件
+cp ./conf/logstash.conf $logstash_install_dir/logstash.conf
+
+# 测试  ./bin/logstash -f ./config/logstash.conf  -t
+# 启动  ./bin/logstash -f ./config/logstash.conf
 
 

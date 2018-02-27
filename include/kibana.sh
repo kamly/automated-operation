@@ -16,5 +16,5 @@ sed -i "s@#server.host: \"localhost\"@#server.host: \"0.0.0.0\"@g" $kibana_insta
 popd  # 切换
 
 # 需要 启动 elasticsearch 然后再启动 kibana ，访问 xxx:5601
-
+# 启动 ./bin/kibana
 

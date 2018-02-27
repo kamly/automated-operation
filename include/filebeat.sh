@@ -10,4 +10,9 @@ mv $filebeat_version $filebeat_install_dir
 
 popd  # 切换
 
-# 只进行安装，配置文件自行配置
+# 复制配置文件
+cp ./conf/filebeat.yml $filebeat_install_dir/filebeat.yml
+
+# 测试  ./filebeat -c ./filebeat.yml -configtest
+# 启动  ./filebeat -c ./filebeat.yml -e
+
