@@ -203,7 +203,29 @@ menu(){
       echo "Not install or input wrong value for Elasticsearch!"
   fi
 
+  
+########### 是否安装 kibana
 
+  while :;do echo
+      read -p "Do you want Install Kibana?(y/n)" install_kibana_yn
+      if [[ ! $install_kibana_yn =~ ^[y,Y,n,N]$ ]];then
+        echo -e "\033[0mPlease input y/Y or n/N\033[33m"
+      else
+        break
+      fi  
+  done
+
+
+  if [[ "$install_kibana_yn" == "y" || "$install_kibana_yn" == "Y" ]];then
+    if [[ -d "/usr/local/kibana" ]];then
+      echo -e "$RED You had installed kibana!"
+      echo -e "$YELLOW"
+    else
+        . ./include/kibana.sh  
+    fi
+  else
+      echo "Not install or input wrong value for Kibana!"
+  fi
 
 }
 menu
