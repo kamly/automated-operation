@@ -186,7 +186,7 @@ filebeat_version="filebeat-6.2.2-linux-x86_64" # 版本
 # logstash
 # https://artifacts.elastic.co/downloads/logstash/logstash-6.2.2.tar.gz
 
-logstash_install_dir="/usr/local/filebeat"
+logstash_install_dir="/usr/local/logstash"
 
 logstash_gz="logstash-6.2.2.tar.gz"  # 压缩包
 logstash_version="logstash-6.2.2" # 版本
