@@ -1,0 +1,134 @@
+"	------	Vundle插件基本配置	------
+" 关闭vim对vi特性的兼容，vim新特性更适合我们，
+" 同时很多设置和插件依赖于vim的这些改进
+set nocompatible
+
+" 开启文件类型检测，但Vundle插件要求关闭该选项
+filetype off
+
+" 设置包括vundle和初始化相关的runtime path
+set rtp+=~/.vim/bundle/Vundle.vim
+
+" vundle初始化
+call vundle#begin()
+
+" 让vundle管理插件版本，必须
+Plugin 'VundleVim/Vundle.vim'
+
+" 以下范例用来支持不同格式的插件安装
+" 请将安装插件的命令放在 vundle#begin 和 vundle#end 之间
+
+" ----------Github上的插件
+" 格式为 Plugin '用户名/插件仓库名'
+
+" Github Plugin End
+
+
+" ----------有Git支持但不在github上的插件仓库
+" Plugin 'git clone 后面的地址'
+
+" Git Plugin End
+
+
+" ----------本地的Git仓库(例如自己的插件)
+" Plugin 'file:///+本地插件仓库绝对地址'
+
+" Local Plugin End
+
+
+" 你的所有插件需要在下面这行之前
+call vundle#end()		" 必须
+
+
+
+"	------	VIM基本配置	------
+
+" 检测到文件类型后，开启缩进规则
+filetype indent on		" 必须 加载vim自带和插件相应的语法和文件类型相关的脚本
+
+" 忽略插件改变缩进，可以使用以下代替
+" filetype plugin on
+
+" 开启语法高亮
+if has("syntax")
+	syntax on
+endif
+
+" 代开屏幕左侧的行号显示
+" set number
+
+" 在屏幕右下角显示未完成的指令输入
+" set showcmd
+
+" 上下移动光标时，光标的上方或下方至少保留显示的行数
+set scrolloff=5
+
+" indent, eol, start 代表的意思是 缩进位置， 行结束符， 段首，
+" 这样设置可以使得backspace键在这三个特殊的位置也能进行回删动作
+set backspace=indent,eol,start
+
+" 显示匹配的括号
+set showmatch
+
+" 打开搜索高亮模式
+set hlsearch
+
+" smarttab要和后面的shiftwidth配合使用，它只作用于行首位置
+" 当smarttab开启时，在行首键入<TAB>会填充shiftwidth设定的值，
+" 在其他地方则填充tabstop设定的值
+" set smarttab
+
+" 打开自动缩进
+set autoindent
+
+" shiftwidth定义了每一次缩进对应的空格数，当你使用自动格式化(比如gq)，
+" 或者手动缩进(<<和>>)时，vim使用的数值就是这个
+set shiftwidth=4
+
+" tabstop就是<TAB>字符所代表的空格数，
+" 一般我们会用expandtab把<TAB>转变为空格符，然后键入<TAB>时就会产生
+" tabstop个空格了
+set tabstop=4
+
+" 将<TAB>符号转变为<SPACE>，也就是空格
+set expandtab
+
+" 总是把softtabstop设定成和tabstop一样的数值，这样无论是用<TAB>插入缩进
+" 还是用<BS>删除缩进，其行为总是一样的
+set softtabstop=4
+
+set wrap " 折行
+
+set encoding=utf8                "设置内部编码为utf8
+set fileencoding=utf8            "当前编辑的文件编码
+set fileencodings=uft8-bom,utf8,gbk,gb2312,big5   "打开支持编码的文件
+
+set nobackup   "从不备份
+set noswapfile "禁止生成临时文件
+set autowrite  "自动保存
+
+set cursorline " 突出显示当前行
+set pastetoggle=<F10>  "激活/取消 paste模式
+
+" 代码折叠设置
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za	" Enable folding with the <space>
+
+" 支持 PEP8 风格的缩进
+au BufNewFile,BufRead *.py, *.php, *.sh
+	\ set tabstop=4 |
+	\ set softtabstop=4 |
+	\ set shiftwidth=4 |
+	\ set textwidth=79 |
+	\ set autoindent |
+	\ set fileformat=unix
+
+au BufNewFile,BufRead *.js, *.html, *.css
+	\ set tabstop=2 |
+	\ set softtabstop=2 |
+	\ set shiftwidth=2
+
+
+"	------	插件配置	------

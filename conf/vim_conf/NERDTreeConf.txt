@@ -1,0 +1,20 @@
+" 文件树 nerdtredd
+" close vim if the only window left open is NERDTree
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeMinimalUI=1    " 不显示项目树上的额外信息，例如帮助，提示什么的
+" 在 vim 启动的时候默认开启 NERDTree（autocmd 可以缩写为 au）
+" autocmd VimEnter * NERDTree
+" 按下 F5 调出 NERDTree
+nmap <F5> :NERDTree  <CR>
+" 按下 F5 关闭 NERDTree
+nnoremap <F5> :exe 'NERDTreeToggle'<CR>
+" 将 NERDTree 的窗口设置在左侧
+let NERDTreeWinPos="left"
+" 设置宽度
+let g:NERDTreeWinSize=25
+" 显示行号
+let g:NERDTreeShowLineNumbers=1
+" 显示书签列表
+let NERDTreeShowBookmarks=1
+" 显示隐藏文件
+let NERDTreeShowHidden=1

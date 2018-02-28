@@ -1,0 +1,7 @@
+
+" taglist 插件
+" 需要安装ctags
+let g:tagbar_width=32
+let g:tagbar_autofocus=1
+nmap <F6> :TagbarToggle<CR>
+
