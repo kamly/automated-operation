@@ -210,3 +210,140 @@ uninstall_mysql(){
 	esac
 }
 uninstall_mysql
+
+
+
+
+# 卸载 elasticsearch
+uninstall_elasticsearch(){
+
+	echo -e "$YELLOW"
+	read -p "Please Choose Uninstall elasticsearch or Not! ( y,Y/n,N )" uninstall_elasticsearch
+	case $uninstall_elasticsearch in
+	y|Y)
+		if [ -d $elasticsearch_install_dir ];then  # 确认该目录是否存在
+		
+			ps aux | grep elasticsearch | grep -v grep | awk '{ print $2 }' | xargs kill -9 
+
+			# 删除 /data/xxx data/logs/xxx /usr/local/xxx
+			rm -rf /data/elasticsearch /data/logs/elasticsearch /usr/local/elasticsearch 
+			
+			echo "Uninstall elasticsearch successful!"
+		else
+			echo
+			echo -e "No elasticsearch Server installed in your system!!"
+		fi
+	;;
+	n|N)
+			echo
+			echo  "You select not uninstall elasticsearch!"
+	;;
+	*)
+			echo
+			echo  "Input error to uninstall elasticsearch!!! "
+	;;
+	esac
+}
+uninstall_elasticsearch
+
+
+# 卸载 kibana
+uninstall_kibana(){
+
+	echo -e "$YELLOW"
+	read -p "Please Choose Uninstall kibana or Not! ( y,Y/n,N )" uninstall_kibana
+	case $uninstall_kibana in
+	y|Y)
+		if [ -d $kibana_install_dir ];then  # 确认该目录是否存在
+		
+			ps aux | grep kibana | grep -v grep | awk '{ print $2 }' | xargs kill -9 
+
+			# 删除 data/logs/xxx /usr/local/xxx
+			rm -rf /data/logs/kibana /usr/local/kibana 
+			
+			echo "Uninstall kibana successful!"
+		else
+			echo
+			echo -e "No kibana Server installed in your system!!"
+		fi
+	;;
+	n|N)
+			echo
+			echo  "You select not uninstall kibana!"
+	;;
+	*)
+			echo
+			echo  "Input error to uninstall kibana!!! "
+	;;
+	esac
+}
+uninstall_kibana
+
+
+
+# 卸载 filebeat
+uninstall_filebeat(){
+
+	echo -e "$YELLOW"
+	read -p "Please Choose Uninstall filebeat or Not! ( y,Y/n,N )" uninstall_filebeat
+	case $uninstall_filebeat in
+	y|Y)
+		if [ -d $filebeat_install_dir ];then  # 确认该目录是否存在
+		
+			ps aux | grep filebeat | grep -v grep | awk '{ print $2 }' | xargs kill -9 
+
+			# 删除 data/logs/xxx /usr/local/xxx
+			rm -rf /data/logs/filebeat /usr/local/filebeat 
+			
+			echo "Uninstall filebeat successful!"
+		else
+			echo
+			echo -e "No filebeat Server installed in your system!!"
+		fi
+	;;
+	n|N)
+			echo
+			echo  "You select not uninstall filebeat!"
+	;;
+	*)
+			echo
+			echo  "Input error to uninstall filebeat!!! "
+	;;
+	esac
+}
+uninstall_filebeat
+
+
+# 卸载 logstash
+uninstall_logstash(){
+
+	echo -e "$YELLOW"
+	read -p "Please Choose Uninstall logstash or Not! ( y,Y/n,N )" uninstall_logstash
+	case $uninstall_logstash in
+	y|Y)
+		if [ -d $logstash_install_dir ];then  # 确认该目录是否存在
+		
+			ps aux | grep logstash | grep -v grep | awk '{ print $2 }' | xargs kill -9 
+
+			# 删除 data/logs/xxx /usr/local/xxx
+			rm -rf /data/logs/logstash /usr/local/logstash 
+			
+			echo "Uninstall logstash successful!"
+		else
+			echo
+			echo -e "No logstash Server installed in your system!!"
+		fi
+	;;
+	n|N)
+			echo
+			echo  "You select not uninstall logstash!"
+	;;
+	*)
+			echo
+			echo  "Input error to uninstall logstash!!! "
+	;;
+	esac
+}
+uninstall_logstash
+
+

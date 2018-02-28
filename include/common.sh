@@ -175,6 +175,8 @@ kibana_port=5601  # 默认端口
 kibana_gz="kibana-6.2.2-linux-x86_64.tar.gz"  # 压缩包
 kibana_version="kibana-6.2.2-linux-x86_64" # 版本
 
+kibana_log="/data/logs/kibana" # 日志
+
 # filebeat
 # https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.2.2-linux-x86_64.tar.gz  下载地址
 
@@ -182,6 +184,8 @@ filebeat_install_dir="/usr/local/filebeat"
 
 filebeat_gz="filebeat-6.2.2-linux-x86_64.tar.gz"  # 压缩包
 filebeat_version="filebeat-6.2.2-linux-x86_64" # 版本
+
+filebeat_log="/data/logs/filebeat" # 日志
 
 # logstash
 # https://artifacts.elastic.co/downloads/logstash/logstash-6.2.2.tar.gz
@@ -191,5 +195,5 @@ logstash_install_dir="/usr/local/logstash"
 logstash_gz="logstash-6.2.2.tar.gz"  # 压缩包
 logstash_version="logstash-6.2.2" # 版本
 
-
+logstash_log="/data/logs/logstash" # 日志
 

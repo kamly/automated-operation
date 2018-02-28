@@ -12,9 +12,12 @@ mv $kibana_version $kibana_install_dir
 sed -i "s@#server.port: 5601@server.port: ${kibana_port}@g" $kibana_install_dir/config/kibana.yml  # 端口
 sed -i "s@#server.host: \"localhost\"@#server.host: \"0.0.0.0\"@g" $kibana_install_dir/config/kibana.yml  # 外网访问   
 
+# 新建日志目录
+mkdir $kibana_log
 
 popd  # 切换
 
 # 需要 启动 elasticsearch 然后再启动 kibana ，访问 xxx:5601
 # 启动 ./bin/kibana
+# 挂起  nohup /usr/local/kibana/bin/kibana  >> /data/logs/kibana/`date -d "now" +%Y-%m-%d`.log 2>&1 &
 
