@@ -18,7 +18,7 @@ function checkVimVersion() {
 	vimVersion=$(echo $vimLoc | sed -r 's/.+vim\.(.+)/\1/')
 	echo -e "\033[32m你系统VIM的版本为：$vimVersion\033[0m"
 
-	if [ $vimVersion = basic ]; then
+	if [ $vimVersion == basic ]; then
 		return 0
 	else
 		return 1
