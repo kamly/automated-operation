@@ -19,5 +19,5 @@ popd  # 切换
 
 # 需要 启动 elasticsearch 然后再启动 kibana ，访问 xxx:5601
 # 启动 ./bin/kibana
-# 挂起  nohup /usr/local/kibana/bin/kibana  >> /data/logs/kibana/`date -d "now" +%Y-%m-%d`.log 2>&1 &
+# 挂起  nohup /usr/local/kibana/bin/kibana  &>> /data/logs/kibana/nohup.log  &
 

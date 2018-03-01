@@ -18,5 +18,5 @@ cp ./conf/logstash.conf $logstash_install_dir/logstash.conf
 
 # 测试  ./bin/logstash -f ./config/logstash.conf  -t
 # 启动  ./bin/logstash -f ./config/logstash.conf
-# 挂起  nohup /usr/local/logstash/bin/logstash -f /usr/local/logstash/config/logstash.conf >> /data/logs/logstash/`date -d "now" +%Y-%m-%d`.log 2>&1 &
+# 挂起  nohup /usr/local/logstash/bin/logstash -f /usr/local/logstash/config/logstash.conf &>> /data/logs/logstash/nohup.log &
 
