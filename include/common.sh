@@ -94,7 +94,8 @@ redis_gz="redis-4.0.0.tar.gz"  # 压缩包
 redis_version="redis-4.0.0" # 版本
 
 redis_port=6379 # 默认端口
-redis_data=/data/redis
+redis_data="/data/redis"
+redis_log="/data/logs/redis"
 
 # 默认 mysql
 
@@ -144,10 +145,13 @@ boost_version_tar="${boost_version}.tar.gz"
 # 数据备份 update的时候使用
 data_backup_dir="/data/backup" # 备份目录
 
-mysql_data_backup="${data_backup_dir}/mysql_`date +%Y%m%d`.sql" # 旧的mysql的数据 
+mysql_backup="${data_backup_dir}/mysql" # logs etc
+mysql_data_backup="${data_backup_dir}/mysql/mysql_`date +%Y%m%d`.sql" # 旧的mysql的数据 
 
-redis_data_backup="${data_backup_dir}/redis_`date +%Y%m%d`.rdb" # 旧的redis的数据 
+redis_backup="${data_backup_dir}/redis" # logs etc
+redis_data_backup="${data_backup_dir}/redis/edis_`date +%Y%m%d`.rdb" # 旧的redis的数据 
 
+nginx_backup="${data_backup_dir}/nginx/" # logs data ssl conf 
 
 
 # elasticsearch
