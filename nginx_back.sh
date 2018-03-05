@@ -41,8 +41,6 @@ else
     else
         if [ $1 == "backup" ];then
             nginx_backup
-        elif [ $1 == "import" ];then
-            nginx_import
         else
             echo -e "Usage {$0 backup|import}"
         fi

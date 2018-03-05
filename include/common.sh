@@ -149,7 +149,7 @@ mysql_backup="${data_backup_dir}/mysql" # logs etc
 mysql_data_backup="${data_backup_dir}/mysql/mysql_`date +%Y%m%d`.sql" # 旧的mysql的数据 
 
 redis_backup="${data_backup_dir}/redis" # logs etc
-redis_data_backup="${data_backup_dir}/redis/edis_`date +%Y%m%d`.rdb" # 旧的redis的数据 
+redis_data_backup="${data_backup_dir}/redis/redis_`date +%Y%m%d`.rdb" # 旧的redis的数据 
 
 nginx_backup="${data_backup_dir}/nginx/" # logs data ssl conf 
 
