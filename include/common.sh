@@ -54,8 +54,9 @@ jemalloc_tar='jemalloc-3.6.0.tar.bz2'
 zlib="zlib-1.2.11"
 zlib_tar="zlib-1.2.11.tar.xz"
 
-openssl='openssl-1.0.1t'
-openssl_tar='openssl-1.0.1t.tar.gz'
+# https://www.openssl.org/source/openssl-1.0.2n.tar.gz  下载地址
+openssl='openssl-1.0.2n'
+openssl_tar='openssl-1.0.2n.tar.gz'
 
 pcre='pcre-8.39'
 pcre_tar='pcre-8.39.tar.bz2'
