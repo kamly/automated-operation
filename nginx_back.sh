@@ -15,7 +15,7 @@ nginx_backup(){
     fi
 
     cp -R $ngx_root_dir $redis_backup # www
-    cp -R $ngx_install_dir/etc $redis_backup # ssl
+    cp -R $ngx_install_dir/ssl $redis_backup # ssl
     cp -R $ngx_install_dir/conf $redis_backup # conf
     cp -R $ngx_logs $redis_backup # logs
         
