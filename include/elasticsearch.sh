@@ -42,5 +42,5 @@ chown -R $elasticsearch_user:$elasticsearch_group  $elasticsearch_install_dir $e
 popd  # 切换
 
 # 需要自己切换到 elasticsearch 用户进行测试
-# 启动 ./bin/elasticsearch
+# 启动 /usr/local/elasticsearch/bin/elasticsearch -d
 

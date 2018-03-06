@@ -10,7 +10,7 @@ mv $kibana_version $kibana_install_dir
 
 # 修改配置文件
 sed -i "s@#server.port: 5601@server.port: ${kibana_port}@g" $kibana_install_dir/config/kibana.yml  # 端口
-sed -i "s@#server.host: \"localhost\"@#server.host: \"0.0.0.0\"@g" $kibana_install_dir/config/kibana.yml  # 外网访问   
+sed -i "s@#server.host: \"localhost\"@server.host: \"0.0.0.0\"@g" $kibana_install_dir/config/kibana.yml  # 外网访问   
 
 # 新建日志目录
 mkdir $kibana_log
