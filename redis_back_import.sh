@@ -17,7 +17,6 @@ redis_backup(){
     $redis_install_dir/src/redis-cli -h 127.0.0.1 -p ${redis_port} -a "${redis_root_pass}" SAVE # data
     mv $redis_data/dump.rdb  $redis_data_backup # data
     cp -R $redis_install_dir/etc $redis_backup # etc
-    cp -R $redis_log $redis_backup # logs
         
     if [[ $? == 0 ]];then
         echo -e " \033[32m Backup redis Data success! \033[0m"

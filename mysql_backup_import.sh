@@ -16,7 +16,6 @@ mysql_sql_backup(){
 
     $mysql_install_dir/bin/mysqldump -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass --all-databases > $mysql_data_backup  # data
     cp -R $mysql_install_dir/etc $mysql_backup  # etc
-    cp -R $mysql_log $mysql_backup  # logs    
     
     if [[ $? == 0 ]];then
         echo -e " \033[32m Backup Mysql Data success! \033[0m"

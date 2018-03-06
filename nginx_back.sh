@@ -14,10 +14,9 @@ nginx_backup(){
         service nginx start # 
     fi
 
-    cp -R $ngx_root_dir $nginx_backup # www
+    mv  /data/www /data/www_backup # www
     cp -R $ngx_install_dir/ssl $nginx_backup # ssl
     cp -R $ngx_install_dir/conf $nginx_backup # conf
-    cp -R $ngx_logs $nginx_backup # logs
         
     if [[ $? == 0 ]];then
         echo -e " \033[32m Backup nginx Data success! \033[0m"
