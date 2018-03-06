@@ -1,7 +1,7 @@
 #!/bin/bash     
 
 # 安装 java环境
-apt-get update && apt-get install openjdk-8-jdk-headless
+apt-get update -y && apt-get -y install openjdk-8-jdk-headless
 
 
 # 校验用户组是否存在
