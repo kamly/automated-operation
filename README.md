@@ -35,7 +35,7 @@ ubnutu 16.04
 
 ```shell
 apt-get update # 更新源
-apt-get installl -y git # 安装git
+apt-get install -y git # 安装git
 # 拉取代码，建议脚本放在`/data/lnmp`
 mkdir -p /data
 cd /data
