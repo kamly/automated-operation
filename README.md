@@ -2,9 +2,6 @@
 
 由于大学期间，折腾服务器的配置环境遇到不少巨坑，所以一直想弄一个自动化脚本。
 
-功能：
-1. 安装 `./install.sh`   sync,nginx,php,redis,mysql 
-2. 卸载 `./uninstall.sh`  nginx,php,redis,mysql
 
 # 环境配置
 
@@ -18,10 +15,11 @@ ubnutu 16.04
  - php (5.6.30 7.1.6)
  - redis (4.0.0)
  - mysql (5.6 5.7)
+
 2. 软件安装包存放在云盘，需要先下载到 `./src/` 的目录中
 
 
-# 安装说明
+# 软件安装目录说明
 
 
 1.  `/usr/local/xxx` 安装目录
@@ -29,11 +27,11 @@ ubnutu 16.04
 3.  `/usr/local/xxx/etc` `/usr/local/xxx/conf/` 配置目录
 4.  `/data/logs/xxx` 日志
 
-> `xxx` 指的是安装软件的名字，具体有（nginx,redis,php,mysql）
+> `xxx` 指的是安装软件的名字，具体有（nginx,redis,php,mysql...）
 
 # 具体操作
 
-## 拉取脚本
+## 1. 拉取脚本
 
 ```shell
 apt-get update # 更新源
@@ -44,13 +42,13 @@ cd /data
 git clone https://github.com/kamly/automated-operation.git
 ```
 
-## 下载资源上传到服务器
+## 2. 上传软件包到服务器
 
 软件安装包存放在[云盘](https://pan.baidu.com/s/1jJYgAN0)。
 
 先下载到本地，然后上传到服务器的 `./src/` 目录中
 
-## 具体步骤和使用方法
+## 3. 各脚本使用方法
 
 参考[automated-operation wiki](https://github.com/kamly/automated-operation/wiki)
 
