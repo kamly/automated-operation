@@ -14,7 +14,7 @@ mkdir $logstash_log
 popd  # 切换
 
 # 复制配置文件
-cp ./conf/logstash.conf $logstash_install_dir/conf/logstash.conf
+cp ./conf/logstash.conf $logstash_install_dir/config/logstash.conf
 
 # 测试  ./bin/logstash -f ./config/logstash.conf  -t
 # 启动  ./bin/logstash -f ./config/logstash.conf
