@@ -44,111 +44,13 @@ cd /data
 git clone https://github.com/kamly/automated-operation.git
 ```
 
-## 上传资源
+## 下载资源上传到服务器
 
 软件安装包存放在[云盘](https://pan.baidu.com/s/1jJYgAN0)。
 
 先下载到本地，然后上传到服务器的 `./src/` 目录中
 
-## ./install.sh
+## 具体步骤和使用方法
 
-执行安装命令 `./install.sh`
-
-1. 是否安装 sync_time 时间同步
-
-选择，执行之后
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9txkgqrj21w41iykde.jpg )
-
-2. 是否安装 nginx 
-
-选择
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tx37xmj21w0118gzl.jpg)
-
-执行之后
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tvnci1j21rc0e6wjr.jpg)
-
-3. 是否安装 php
-
-选择
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9txsmuwj21qw0omwo8.jpg)
-
-执行之后
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tvopaaj21rg0hon4j.jpg)
-
-4. 是否安装 redis
-
-选择
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tw2xatj21ri0iy0zm.jpg)
-
-执行之后
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9tvnkj8j21ro0h6n0o.jpg)
-
-5. 是否安装 mysql
-
-选择
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9twvj6pj21rk0tsajf.jpg)
-
-执行之后
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1fob9txsejij21re14e4cg.jpg)
-
-6. 是否安装 elasticsearxh
-
-7. 是否安装 kibana
-
-8. 是否安装 filebeat
-
-9. 是否安装 logstash
-
-
-## ./uninstall.sh
-
-执行卸载命令 `./uninstall.sh`
-
-选择
-![](http://ww1.sinaimg.cn/large/8c2e9604gy1foba8kkyl9j21rg0ycahh.jpg)
-
-
-## ./reset_mysql_pwd.sh
-
-执行重置 mysql 密码命令 `./reset_mysql_pwd.sh`
-
-## ./reset_redis_pwd.sh
-
-执行重置 redis 密码命令 `./reset_redis_pwd.sh`
-
-## ./mysql_back_import.sh
-
-备份命令 `./mysql_backup_import.sh backup` 
-
-导入命令(指定日期) `./mysql_backup_import.sh import 20180211`
-
-## ./redis_back_import.sh
-
-备份命令 `./redis_backup_import.sh backup`  
-
-导入命令(指定日期) `./redis_backup_import.sh import 20180211`
-
-
-## ./vhost 
-
-添加域名 `./vhost.sh add` 
-删除域名 `./vhost.sh del`
-
-## ./is_crontab_on.sh
-
-检查是否有 "xxx"  任务 `./is_crontab_on.sh "30 8 * * * /data/sh/start_daily_check.sh"`
-
-## ./turn_on_crontab.sh 
-
-启动 "xxx" 任务 `./turn_on_crontab.sh "30 8 * * * /data/sh/start_daily_check.sh"` 
-
-## ./turn_off_crontab.sh 
-
-关闭 "xxx" 任务 `./turn_on_crontab.sh "30 8 * * * /data/sh/start_daily_check.sh"` 
-
-
-## ./vim.sh
-
-安装 vim 插件 Syntastic（语法检测），SimpylFold（折叠）， NERDTree（文件树）， VimAirLine（状态栏），Taglist（函数栏），Theme（主题） `./vim.sh -all`
-
+参考[automated-operation wiki](https://github.com/kamly/automated-operation/wiki)
 
