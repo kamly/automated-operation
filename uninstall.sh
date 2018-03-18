@@ -20,12 +20,12 @@ clear
 . include/sysinfo.sh # 输出系统信息
 
 # 卸载 Nginx
-uninstall_ngx(){
+uninstall_nginx(){
 	echo -e "$YELLOW"
-	read -p "Please Choose Uninstall nginx or Not! ( y,Y/n,N )" uninstall_ngx
-	case $uninstall_ngx in
+	read -p "Please Choose Uninstall nginx or Not! ( y,Y/n,N )" uninstall_nginx
+	case $uninstall_nginx in
 	y|Y)
-		if [ -d $ngx_install_dir ];then # 确认该目录是否存在
+		if [ -d $nginx_install_dir ];then # 确认该目录是否存在
 			
 			service nginx stop  && sleep 3  # 停止运行
 			# ps -eaf | grep nginx | grep master | awk  '{print $2}' | xargs kill -9
@@ -40,7 +40,7 @@ uninstall_ngx(){
 			rm -rf /etc/init.d/nginx  # 删除服务脚本
 
 			# 删除 /bin/ /data/xxx data/logs/xxx /usr/local/xxx
-			rm -rf  /usr/bin/nginx  $ngx_root_dir $ngx_logs $ngx_install_dir 
+			rm -rf  /usr/bin/nginx  $nginx_root_dir $nginx_logs $nginx_install_dir 
 			
 			echo  "Uninstall nginx successful!" 
 		else
@@ -58,7 +58,7 @@ uninstall_ngx(){
 	;;
 	esac
 }
-uninstall_ngx
+uninstall_nginx
 
 
 

@@ -31,8 +31,8 @@ menu(){
 ########### 是否安装 nginx
 
     while :;do echo      
-        read -p "Do you want Install Nginx?(y/n)" install_ngx_yn
-        if [[ ! $install_ngx_yn =~ ^[y,Y,n,N]$ ]];then
+        read -p "Do you want Install Nginx?(y/n)" install_nginx_yn
+        if [[ ! $install_nginx_yn =~ ^[y,Y,n,N]$ ]];then
             echo -e "\033[0m Please input y/Y or n/N \033[33m"
         else
             break        
@@ -40,7 +40,7 @@ menu(){
     done
 
     # nginx
-    if [[ "$install_ngx_yn" == "y" || "$install_ngx_yn" == "Y" ]];then
+    if [[ "$install_nginx_yn" == "y" || "$install_nginx_yn" == "Y" ]];then
       if [[ -d "/usr/local/nginx" ]];then
         echo -e "$RED You had installed nginx!"
         echo -e "$YELLOW"

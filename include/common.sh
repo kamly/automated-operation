@@ -39,14 +39,14 @@ src_dir=`pwd`/src
 
 # 默认 nginx 
 # http://nginx.org/download/ 下载地址
-ngx_user="www"
-ngx_group="www"
+nginx_user="www"
+nginx_group="www"
 
-ngx_install_dir="/usr/local/nginx"
-ngx_root_dir="/data/www/"
-ngx_default="default"
-ngx_logs="/data/logs/nginx"
-ngx_port=80
+nginx_install_dir="/usr/local/nginx"
+nginx_root_dir="/data/www/"
+nginx_default="default"
+nginx_logs="/data/logs/nginx"
+nginx_port=80
 
 jemalloc='jemalloc-3.6.0'
 jemalloc_tar='jemalloc-3.6.0.tar.bz2'
@@ -61,8 +61,8 @@ openssl_tar='openssl-1.0.2n.tar.gz'
 pcre='pcre-8.39'
 pcre_tar='pcre-8.39.tar.bz2'
 
-ngx="nginx-1.12.0"
-ngx_tar="nginx-1.12.0.tar.gz"
+nginx="nginx-1.12.0"
+nginx_tar="nginx-1.12.0.tar.gz"
 
 
 # 默认 PHP

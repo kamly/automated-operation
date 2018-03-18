@@ -10,19 +10,19 @@ vhost_add(){
 	echo -e "$YELLOW"
     read -p "Please input your domain name as your htdoc! (example: charmingkamly.cn)  " domain_name
 
-    mkdir -p ${ngx_root_dir}/${domain_name} # 创建目录
+    mkdir -p ${nginx_root_dir}/${domain_name} # 创建目录
 
-    chown -R $ngx_user:$ngx_group ${ngx_root_dir}/${domain_name} # 改变权限
+    chown -R $nginx_user:$nginx_group ${nginx_root_dir}/${domain_name} # 改变权限
 
-    cp -f ./conf/nginx_vhost.conf  ${ngx_install_dir}/conf/vhost/${domain_name}.conf # 复制配置文件
+    cp -f ./conf/nginx_vhost.conf  ${nginx_install_dir}/conf/vhost/${domain_name}.conf # 复制配置文件
 
-    sed -i "s/domain/${domain_name}/g" ${ngx_install_dir}/conf/vhost/${domain_name}.conf # 替换domain词语
+    sed -i "s/domain/${domain_name}/g" ${nginx_install_dir}/conf/vhost/${domain_name}.conf # 替换domain词语
 
 	nginx -s reload # 重启
 
     echo -e "$GREEN"
-    echo -e "Created ${ngx_root_dir}/${domain_name} success!"
-	echo -e "Created ${ngx_install_dir}/conf/vhost/${domain_name}.conf success!"
+    echo -e "Created ${nginx_root_dir}/${domain_name} success!"
+	echo -e "Created ${nginx_install_dir}/conf/vhost/${domain_name}.conf success!"
 	echo -e "Be careful your nginx server port and php-fpm port !!!"
 }
 
@@ -34,19 +34,19 @@ vhost_del(){
 	if [  -z "$domain_name" ];then
 		echo
 		echo -e "${WHITE}You did not intput anything."
-	elif [  -f ${ngx_install_dir}/conf/vhost/${domain_name}.conf ];then
+	elif [  -f ${nginx_install_dir}/conf/vhost/${domain_name}.conf ];then
 
 		check_backup_dir
 
-		mv ${ngx_root_dir}/${domain_name} ${data_backup_dir}/${domain_name}_`date +%m%d%H%M` # 移动目录
+		mv ${nginx_root_dir}/${domain_name} ${data_backup_dir}/${domain_name}_`date +%m%d%H%M` # 移动目录
 
-		mv ${ngx_install_dir}/conf/vhost/${domain_name}.conf ${data_backup_dir}/${domain_name}.conf_`date +%m%d%H%M` # 移动配置文件
+		mv ${nginx_install_dir}/conf/vhost/${domain_name}.conf ${data_backup_dir}/${domain_name}.conf_`date +%m%d%H%M` # 移动配置文件
 		
         nginx -s reload
 		
         echo -e "$GREEN"
-		echo -e "Delete ${ngx_root_dir}/${domain_name} success!"
-		echo -e "Delete ${ngx_install_dir}/conf/vhost/${domain_name}.conf success!"
+		echo -e "Delete ${nginx_root_dir}/${domain_name} success!"
+		echo -e "Delete ${nginx_install_dir}/conf/vhost/${domain_name}.conf success!"
 	else
 		echo
 		echo  -e "${RED}You input a incroccet domain name,Please check it..."
