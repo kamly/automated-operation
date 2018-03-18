@@ -15,7 +15,7 @@ redis_backup(){
     fi
 
     $redis_install_dir/src/redis-cli -h 127.0.0.1 -p ${redis_port} -a "${redis_root_pass}" SAVE # data
-    mv $redis_data/dump.rdb  $redis_data_backup # data
+    mv $redis_data/dump.rdb  ${redis_backup}/redis_`date +%Y%m%d`.rdb # data
     cp -R $redis_install_dir/etc $redis_backup # etc
         
     if [[ $? == 0 ]];then
@@ -27,7 +27,7 @@ redis_backup(){
 
 # 导入
 redis_import(){
-    cp $data_backup_dir/redis_$backup_name.rdb $redis_data/dump.rdb 
+    cp ${redis_backup}/redis_$backup_name.rdb $redis_data/dump.rdb 
 
     if [[ $? == 0 ]];then
         echo -e " \033[32m import redis Data success! \033[0m"

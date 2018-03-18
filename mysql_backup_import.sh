@@ -14,7 +14,7 @@ mysql_sql_backup(){
         service mysqld start # 启动mysql
     fi
 
-    $mysql_install_dir/bin/mysqldump -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass --all-databases > $mysql_data_backup  # data
+    $mysql_install_dir/bin/mysqldump -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass --all-databases > ${mysql_backup}/mysql_`date +%Y%m%d`.sql  # data
     cp -R $mysql_install_dir/etc $mysql_backup  # etc
     
     if [[ $? == 0 ]];then
@@ -26,7 +26,7 @@ mysql_sql_backup(){
 
 # 导入
 mysql_sql_import(){
-    $mysql_install_dir/bin/mysql -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass < ${data_backup_dir}/mysql_$backup_name.sql
+    $mysql_install_dir/bin/mysql -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass < ${mysql_backup}/mysql_$backup_name.sql
 
     if [[ $? == 0 ]];then
         echo -e " \033[32m import mysql Data success! \033[0m"
