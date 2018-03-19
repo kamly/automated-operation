@@ -45,6 +45,24 @@ menu(){
         echo -e "$RED You had installed nginx!"
         echo -e "$YELLOW"
       else
+        # 选择在线安装还是已经上传
+        while :;do echo      
+            read -p "Do you want Install Nginx Online?(y/n)" install_nginx_online
+            if [[ ! $install_nginx_online =~ ^[y,Y,n,N]$ ]];then
+                echo -e "\033[0m Please input y/Y or n/N \033[33m"
+            else
+                break        
+            fi
+        done
+        if [[ ${install_nginx_online}  == "y" ]];then
+          pushd $src_dir
+          down_url ${jemalloc_download_url} # jemalloc
+          down_url ${zlib_download_url} # zlib
+          down_url ${openssl_download_url} # openssl
+          down_url ${pcre_download_url} # pcre
+          down_url ${nginx_download_url} # nginx   http://nginx.org/download/
+          popd
+        fi
          . ./include/nginx.sh  
       fi
     else
@@ -84,6 +102,23 @@ menu(){
           echo -e "$YELLOW"
         else
           echo "You select install ${php_bz[${php_version_select}]}"
+
+          # 选择在线安装还是已经上传
+          while :;do echo      
+              read -p "Do you want Install PHP Online?(y/n)" install_php_online
+              if [[ ! $install_php_online =~ ^[y,Y,n,N]$ ]];then
+                  echo -e "\033[0m Please input y/Y or n/N \033[33m"
+              else
+                  break        
+              fi
+          done
+          if [[ ${install_php_online}  == "y" ]];then
+            pushd $src_dir
+              down_url ${curl_download_url} 
+              down_url ${libmcrypt_download_url} 
+              down_url ${php_download_url[${php_version_select}]} 
+            popd
+          fi
           . ./include/php.sh
         fi
     else
@@ -105,7 +140,7 @@ menu(){
     # 安装 redis
     if [ "$install_redis_yn" == "y" -o "$install_redis_yn" == "Y" ];then
        if [ -d "/usr/local/redis"  ];then
-        echo -e "${RED}You had installed Mysql Server!$YELLOW"  
+        echo -e "${RED}You had installed Redis Server!$YELLOW"  
       else
         #  密码
         echo
@@ -113,8 +148,23 @@ menu(){
         redis_root_pass=${redis_root_pass:=root} # 提供默认
         echo  -e "redis root password: ${redis_root_pass}"
         echo  -e "$WHITE"
-
         echo "You select install Redis."
+
+        # 选择在线安装还是已经上传
+          while :;do echo      
+              read -p "Do you want Install Redis Online?(y/n)" install_redis_online
+              if [[ ! $install_redis_online =~ ^[y,Y,n,N]$ ]];then
+                  echo -e "\033[0m Please input y/Y or n/N \033[33m"
+              else
+                  break        
+              fi
+          done
+          if [[ ${install_redis_online}  == "y" ]];then
+            pushd $src_dir
+              down_url ${redis_download_url}
+            popd
+          fi
+
         . ./include/redis.sh
       fi
     else
@@ -197,6 +247,20 @@ menu(){
       echo -e "$RED You had installed elasticsearch!"
       echo -e "$YELLOW"
     else
+        # 选择在线安装还是已经上传
+        while :;do echo      
+            read -p "Do you want Install Elasticsearch Online?(y/n)" install_elasticsearch_online
+            if [[ ! $install_elasticsearch_online =~ ^[y,Y,n,N]$ ]];then
+                echo -e "\033[0m Please input y/Y or n/N \033[33m"
+            else
+                break        
+            fi
+        done
+        if [[ ${install_elasticsearch_online}  == "y" ]];then
+          pushd $src_dir
+            down_url ${elasticsearch_download_url}
+          popd
+        fi
         . ./include/elasticsearch.sh  
     fi
   else
@@ -221,6 +285,20 @@ menu(){
       echo -e "$RED You had installed kibana!"
       echo -e "$YELLOW"
     else
+        # 选择在线安装还是已经上传
+        while :;do echo      
+            read -p "Do you want Install Kibana Online?(y/n)" install_kibana_online
+            if [[ ! $install_kibana_online =~ ^[y,Y,n,N]$ ]];then
+                echo -e "\033[0m Please input y/Y or n/N \033[33m"
+            else
+                break        
+            fi
+        done
+        if [[ ${install_kibana_online}  == "y" ]];then
+          pushd $src_dir
+            down_url ${kibana_download_url}
+          popd
+        fi
         . ./include/kibana.sh  
     fi
   else
@@ -245,6 +323,20 @@ menu(){
       echo -e "$RED You had installed filebeat!"
       echo -e "$YELLOW"
     else
+        # 选择在线安装还是已经上传
+        while :;do echo      
+            read -p "Do you want Install Filebeat Online?(y/n)" install_filebeat_online
+            if [[ ! $install_filebeat_online =~ ^[y,Y,n,N]$ ]];then
+                echo -e "\033[0m Please input y/Y or n/N \033[33m"
+            else
+                break        
+            fi
+        done
+        if [[ ${install_filebeat_online}  == "y" ]];then
+          pushd $src_dir
+            down_url ${filebeat_download_url}
+          popd
+        fi
         . ./include/filebeat.sh  
     fi
   else
@@ -268,6 +360,20 @@ menu(){
       echo -e "$RED You had installed logstash!"
       echo -e "$YELLOW"
     else
+        # 选择在线安装还是已经上传
+        while :;do echo      
+            read -p "Do you want Install Logstash Online?(y/n)" install_logstash_online
+            if [[ ! $install_logstash_online =~ ^[y,Y,n,N]$ ]];then
+                echo -e "\033[0m Please input y/Y or n/N \033[33m"
+            else
+                break        
+            fi
+        done
+        if [[ ${install_logstash_online}  == "y" ]];then
+          pushd $src_dir
+            down_url ${logstash_download_url}
+          popd
+        fi
         . ./include/logstash.sh  
     fi
   else
