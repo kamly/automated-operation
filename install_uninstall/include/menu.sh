@@ -431,9 +431,9 @@ plugin_dict=(
 
 
 # 命令行参数判断
-case $1 in
+case ${select_way} in
 	-s) # 安装指定的插件
-		for plugin in $@
+		for plugin in ${select_install}
 		do
 			${plugin_dict[$plugin]}
 		done
@@ -444,7 +444,7 @@ case $1 in
 		do 
 			canINS=true
 			# 检查该key是否在命令行参数中
-			for plugin in $@
+			for plugin in ${select_install}
 			do 
 				if [ $plugin_name == $plugin ]; then
 					canINS=false

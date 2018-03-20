@@ -25,8 +25,10 @@ lnmp(){
     . ./include/check_install.sh  # 检查安装状态
 }
 
-# 执行 lnmp
-lnmp 
+
+select_way=$1 # 参数
+select_install=$@ # 全部参数
+lnmp  # 执行 lnmp
 
 echo -e "$WHITE"
 
