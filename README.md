@@ -40,13 +40,16 @@ apt-get install -y git # 安装git
 mkdir -p /data
 cd /data
 git clone https://github.com/kamly/automated-operation.git
+# 安装包目录
+cd automated-operation/install_uninstall
+mkdir src
 ```
 
-## 2. 上传软件包到服务器
+## 2. 上传软件包到服务器或者在线下载安装包
 
 软件安装包存放在[云盘](https://pan.baidu.com/s/1jJYgAN0)。
 
-先下载到本地，然后上传到服务器的 `./install/src/` 目录中
+先下载到本地，然后上传到服务器的 `./install_uninstall/src/` 目录中
 
 ## 3. 各脚本使用方法
 

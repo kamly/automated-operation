@@ -110,7 +110,7 @@ redis_install_dir='/usr/local/redis' # 安装路径
 # http://download.redis.io/releases/redis-4.0.8.tar.gz 下载地址 
 redis_gz='redis-4.0.0.tar.gz'  # 压缩包
 redis_version='redis-4.0.0' # 版本
-redis_download_url='http://download.redis.io/releases/redis-4.0.8.tar.gz'
+redis_download_url='http://download.redis.io/releases/redis-4.0.0.tar.gz'
 
 redis_port=6379 # 默认端口
 redis_data='/data/redis'
