@@ -407,7 +407,7 @@ menu(){
 
 
   if [[ "$install_logstash_yn" == "y" || "$install_logstash_yn" == "Y" ]];then
-    
+    installLogstash
   else
     echo "Not install or input wrong value for Logstash!"
   fi
