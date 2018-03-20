@@ -1,9 +1,10 @@
 #!/bin/bash
 
-. include/common.sh # 引入常量文件
-. include/public.sh # 引入公用函数
+. ../include/common.sh # 引入常量文件
+. ../include/public.sh # 引入公用函数
+. ../include/sysinfo.sh # 输出系统信息
 
-. include/sysinfo.sh # 输出系统信息
+. ./include/public.sh
 
 # 备份
 nginx_backup(){

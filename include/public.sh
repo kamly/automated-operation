@@ -22,7 +22,7 @@ down_url(){
     wget -c --no-check-certificate $*
 }
 
-# 检查有没有备份目录
+# 检查有没有备份目录  移走
 check_backup_dir(){
     if [[ ! -d ${data_backup_dir} ]] ; then
         mkdir -p $data_backup_dir

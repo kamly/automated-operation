@@ -46,7 +46,7 @@ git clone https://github.com/kamly/automated-operation.git
 
 软件安装包存放在[云盘](https://pan.baidu.com/s/1jJYgAN0)。
 
-先下载到本地，然后上传到服务器的 `./src/` 目录中
+先下载到本地，然后上传到服务器的 `./install/src/` 目录中
 
 ## 3. 各脚本使用方法
 
