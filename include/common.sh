@@ -31,13 +31,12 @@ WARN='\033[41,37m'
 # 检测安装 使用 -d /usr/local/xx  xx
 # 判断符号用 ==
 # ${src_dir}
-# 日志，创建目录，权限，删除，设置  mysql配置  php配置  /etc/ /conf/  add_vhost  先下载后使用/直接download
 #------------------------------
 
 # 设置软件包文件夹       
 src_dir=`pwd`/src        
 
-# 默认 nginx 
+# ------- 默认 nginx 
 nginx_user='www'
 nginx_group='www'
 
@@ -73,11 +72,12 @@ nginx_tar='nginx-1.12.0.tar.gz'
 nginx_download_url='http://nginx.org/download/nginx-1.12.0.tar.gz'
 
 
-# 默认 PHP
+# ------- 默认 PHP
 php_user='www'
 php_group='www'
 
 php_install_dir='/usr/local/php'
+php_logs='/data/logs/php'
 php_fpm_port=9000  # 默认端口
 
 
@@ -104,7 +104,7 @@ libmcrypt='libmcrypt-2.5.7'
 libmcrypt_tar='libmcrypt-2.5.7.tar.gz'
 libmcrypt_download_url='ftp://mcrypt.hellug.gr/pub/crypto/mcrypt/libmcrypt/libmcrypt-2.5.7.tar.gz'
 
-# 默认 redis
+# ------- 默认 redis
 redis_install_dir='/usr/local/redis' # 安装路径
 
 # http://download.redis.io/releases/redis-4.0.8.tar.gz 下载地址 
@@ -112,11 +112,11 @@ redis_gz='redis-4.0.0.tar.gz'  # 压缩包
 redis_version='redis-4.0.0' # 版本
 redis_download_url='http://download.redis.io/releases/redis-4.0.0.tar.gz'
 
-redis_port=6379 # 默认端口
 redis_data='/data/redis'
 redis_log='/data/logs/redis'
+redis_port=6379 # 默认端口
 
-# 默认 mysql
+# ------- 默认 mysql
 
 mysql_enter_user='root'
 
@@ -161,17 +161,17 @@ boost_version_tar="${boost_version}.tar.gz"
 
 
 
-# 数据备份 update的时候使用
+# 数据备份
 data_backup_dir="/data/backup" # 备份目录
 
 mysql_backup="${data_backup_dir}/mysql" #  etc data
 
 redis_backup="${data_backup_dir}/redis" #  etc data
 
-nginx_backup="${data_backup_dir}/nginx/" #  ssl conf data 
+nginx_backup="${data_backup_dir}/nginx/" #  ssl conf www
 
 
-# elasticsearch
+# ------- elasticsearch
 elasticsearch_user='elasticsearch'
 elasticsearch_group='elasticsearch'
 
@@ -187,7 +187,7 @@ elasticsearch_data='/data/elasticsearch'
 elasticsearch_log='/data/logs/elasticsearch'
 
 
-# kibana
+# ------- kibana
 kibana_install_dir='/usr/local/kibana'
 kibana_port=5601  # 默认端口
 
@@ -198,7 +198,7 @@ kibana_download_url='https://artifacts.elastic.co/downloads/kibana/kibana-6.2.2-
 
 kibana_log='/data/logs/kibana' # 日志
 
-# filebeat
+# ------- filebeat
 filebeat_install_dir='/usr/local/filebeat'
 
 # https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.2.2-linux-x86_64.tar.gz  下载地址
@@ -208,7 +208,7 @@ filebeat_download_url='https://artifacts.elastic.co/downloads/beats/filebeat/fil
 
 filebeat_log='/data/logs/filebeat' # 日志
 
-# logstash
+# ------- logstash
 logstash_install_dir='/usr/local/logstash'
 
 # https://artifacts.elastic.co/downloads/logstash/logstash-6.2.2.tar.gz  下载地址
