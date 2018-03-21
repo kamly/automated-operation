@@ -460,6 +460,7 @@ case ${select_way} in
     for plugin_install in ${plugin_dict[*]}
     do 
       $plugin_install
+      sleep 0.1
     done
 	;;
   -menu | *) # 菜单安装
