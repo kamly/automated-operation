@@ -44,7 +44,7 @@ install_jemalloc
 install_openssl(){
     pushd $src_dir
     tar zmxf $openssl_tar && cd $openssl # tar.gz
-    ./configure
+    ./config
     make && make install
     popd
 }
