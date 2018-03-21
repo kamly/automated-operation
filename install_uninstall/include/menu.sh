@@ -6,7 +6,6 @@ function installTime() {
   . ./include/sync_time.sh
 }
 
-
 # 安装 nginx
 function installNginx() {
   # 检查 nginx 有没有安装
@@ -433,21 +432,22 @@ plugin_dict=(
 # 命令行参数判断
 case ${select_way} in
 	-s) # 安装指定的插件
-		for plugin in ${select_install}
+		for plugin in ${select_software}
 		do
 			${plugin_dict[$plugin]}
 		done
 	;;
 	-v) # 不安装指定的插件
 		# 遍历plugin_dict所有的key
-		for plugin_name in ${!plugin_dict[*]}
+		for plugin_name in ${plugin_dict[*]}
 		do 
 			canINS=true
 			# 检查该key是否在命令行参数中
-			for plugin in ${select_install}
+			for plugin in ${select_software}
 			do 
 				if [ $plugin_name == $plugin ]; then
 					canINS=false
+          break 
 				fi
 			done
 			if $canINS; then
