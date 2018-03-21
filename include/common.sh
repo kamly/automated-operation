@@ -54,7 +54,7 @@ jemalloc_download_url='https://github.com/jemalloc/jemalloc/releases/download/3.
 
 # http://www.zlib.net/fossils/zlib-1.2.11.tar.gz  下载地址
 zlib='zlib-1.2.11'
-zlib_tar='zlib-1.2.11.tar.xz' 
+zlib_tar='zlib-1.2.11.tar.gz' 
 zlib_download_url='http://www.zlib.net/fossils/zlib-1.2.11.tar.gz'
 
 # https://www.openssl.org/source/openssl-1.0.2n.tar.gz  下载地址
