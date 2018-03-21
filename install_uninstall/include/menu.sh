@@ -439,7 +439,7 @@ case ${select_way} in
 	;;
 	-v) # 不安装指定的插件
 		# 遍历plugin_dict所有的key
-		for plugin_name in ${plugin_dict[*]}
+		for plugin_name in ${!plugin_dict[*]}
 		do 
 			canINS=true
 			# 检查该key是否在命令行参数中
