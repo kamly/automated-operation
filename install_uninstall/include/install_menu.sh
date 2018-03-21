@@ -239,7 +239,7 @@ function installLogstash() {
 
 
 # 显示菜单
-menu(){ 
+menu() { 
 ########## 是否安装 时间同步
 
     while :;do echo
