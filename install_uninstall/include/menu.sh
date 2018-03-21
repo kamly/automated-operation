@@ -438,7 +438,7 @@ case ${select_way} in
 		done
 	;;
 	-v) # 不安装指定的插件
-		# 遍历plugin_dict所有的key
+		# 遍历plugin_dict所有的 key  不按照顺序遍历
 		for plugin_name in ${!plugin_dict[*]}
 		do 
 			canINS=true
@@ -456,11 +456,10 @@ case ${select_way} in
 		done
 	;;
   -all) # 全部安装
-    # 遍历plugin_dict所有的value
+    # 遍历plugin_dict所有的 value  不按照顺序遍历
     for plugin_install in ${plugin_dict[*]}
     do 
       $plugin_install
-      sleep 0.1
     done
 	;;
   -menu | *) # 菜单安装
