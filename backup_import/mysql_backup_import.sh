@@ -15,24 +15,24 @@ mysql_sql_backup(){
         service mysqld start # 启动mysql
     fi
 
-    $mysql_install_dir/bin/mysqldump -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass --all-databases > ${mysql_backup}/mysql_`date +%Y%m%d`.sql  # data
-    cp -R $mysql_install_dir/etc $mysql_backup  # etc
+    ${mysql_install_dir}/bin/mysqldump -u${mysql_enter_user} -P${mysql_port} -p${mysql_root_pass} --all-databases > ${mysql_backup}/mysql_`date +%Y%m%d`.sql  # data
+    cp -R ${mysql_install_dir}/etc ${mysql_backup}  # etc
     
     if [[ $? == 0 ]];then
-        echo -e " \033[32m Backup Mysql Data success! \033[0m"
+        echo -e " ${RED} Backup Mysql Data success! "
     else
-        echo -e " \033[32m Backup failed, pls check... \033[0m " 
+        echo -e " ${RED} Backup failed, pls check... " 
     fi
 }
 
 # 导入
 mysql_sql_import(){
-    $mysql_install_dir/bin/mysql -u$mysql_enter_user -P$mysql_port -p$mysql_root_pass < ${mysql_backup}/mysql_$backup_name.sql
+    ${mysql_install_dir}/bin/mysql -u${mysql_enter_user} -P${mysql_port} -p${mysql_root_pass} < ${mysql_backup}/mysql_${backup_name}.sql
 
     if [[ $? == 0 ]];then
-        echo -e " \033[32m import mysql Data success! \033[0m"
+        echo -e " ${RED} import mysql Data success! "
     else
-        echo -e " \033[32m import failed, pls check... \033[0m " 
+        echo -e " ${RED} import failed, pls check... " 
     fi
 }
 
@@ -40,7 +40,7 @@ mysql_sql_import(){
 # 备份命令 ./mysql_backup_import.sh backup  
 # 导入命令(指定日期) ./mysql_backup_import.sh import 20180211
 
-if [ ! -d $mysql_install_dir ];then
+if [ ! -d ${mysql_install_dir} ];then
     # 没有安装mysql
     echo -e "${RED} No Mysql Server in your System!!"
 else
@@ -60,7 +60,7 @@ else
             if [ -z $2 ];then
                 echo -e "${WHITE} Usage { $0 backup|import 20180211 }${WHITE}"
             else
-                echo -e "You select import Mysql Data to $data_backup_dir"
+                echo -e "You select import Mysql Data to ${data_backup_dir}"
                 backup_name=$2
                 mysql_sql_import
             fi
