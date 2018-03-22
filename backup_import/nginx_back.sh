@@ -15,9 +15,9 @@ nginx_backup(){
         service nginx start # 
     fi
 
-    mv  /data/www /data/www_backup # www
-    cp -R $nginx_install_dir/ssl $nginx_backup # ssl
-    cp -R $nginx_install_dir/conf $nginx_backup # conf
+    mv  /data/www /data/www_backup # www 只是移动目录
+    cp -R $nginx_install_dir/ssl $nginx_backup/ssl # ssl
+    cp -R $nginx_install_dir/conf $nginx_backup/conf # conf
         
     if [[ $? == 0 ]];then
         echo -e " \033[32m Backup nginx Data success! \033[0m"
