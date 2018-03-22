@@ -16,6 +16,7 @@ nginx_backup(){
     fi
 
     mv  /data/www /data/www_backup # www 只是移动目录
+    mkdir $nginx_backup
     cp -R $nginx_install_dir/ssl $nginx_backup # ssl
     cp -R $nginx_install_dir/conf $nginx_backup # conf
         

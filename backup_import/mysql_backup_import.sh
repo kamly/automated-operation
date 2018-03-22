@@ -15,6 +15,7 @@ mysql_sql_backup(){
         service mysqld start # 启动mysql
     fi
 
+    mkdir $mysql_backup
     ${mysql_install_dir}/bin/mysqldump -u${mysql_enter_user} -P${mysql_port} -p${mysql_root_pass} --all-databases > ${mysql_backup}/mysql_`date +%Y%m%d`.sql  # data
     cp -R ${mysql_install_dir}/etc ${mysql_backup}  # etc
     
