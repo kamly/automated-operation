@@ -168,7 +168,7 @@ mysql_backup="${data_backup_dir}/mysql" #  etc data
 
 redis_backup="${data_backup_dir}/redis" #  etc data
 
-nginx_backup="${data_backup_dir}/nginx/" #  ssl conf www
+nginx_backup="${data_backup_dir}/nginx" #  ssl conf www
 
 
 # ------- elasticsearch
