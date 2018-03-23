@@ -15,7 +15,7 @@ redis_backup(){
         service redis start # redis
     fi
 
-    mkdir $redis_backup
+    mkdir ${redis_backup}
     ${redis_install_dir}/src/redis-cli -h 127.0.0.1 -p ${redis_port} -a "${redis_root_pass}" SAVE # data
     mv ${redis_data}/dump.rdb  ${redis_backup}/redis_`date +%Y%m%d`.rdb # data
     cp -R ${redis_install_dir}/etc ${redis_backup} # etc

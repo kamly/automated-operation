@@ -16,9 +16,9 @@ nginx_backup(){
     fi
 
     mv  /data/www /data/www_backup # www 只是移动目录
-    check_dir_exist $nginx_backup
-    cp -R $nginx_install_dir/ssl $nginx_backup # ssl
-    cp -R $nginx_install_dir/conf $nginx_backup # conf
+    check_dir_exist ${nginx_backup}
+    cp -R ${nginx_install_dir}/ssl ${nginx_backup} # ssl
+    cp -R ${nginx_install_dir}/conf ${nginx_backup} # conf
         
     if [[ $? == 0 ]];then
         echo -e " \033[32m Backup nginx Data success! \033[0m"
@@ -31,7 +31,7 @@ nginx_backup(){
 
 # 备份命令 ./nginx_backup_import.sh backup  
 
-if [ ! -d $nginx_install_dir ];then
+if [ ! -d ${nginx_install_dir} ];then
     # 没有安装nginx
     echo -e "${RED} No Nginx Server in your System!!"
 else

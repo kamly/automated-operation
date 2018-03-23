@@ -15,7 +15,7 @@ mysql_sql_backup(){
         service mysqld start # 启动mysql
     fi
 
-    mkdir $mysql_backup
+    mkdir ${mysql_backup}
     ${mysql_install_dir}/bin/mysqldump -u${mysql_enter_user} -P${mysql_port} -p${mysql_root_pass} --all-databases > ${mysql_backup}/mysql_`date +%Y%m%d`.sql  # data
     cp -R ${mysql_install_dir}/etc ${mysql_backup}  # etc
     
@@ -55,7 +55,7 @@ else
         mysql_root_pass=${mysql_root_pass:=root} # 提供默认
 
         if [ $1 == "backup" ];then
-            echo -e "You select backup Mysql Data from $mysql_data"
+            echo -e "You select backup Mysql Data from ${mysql_data}"
             mysql_sql_backup
         elif [ $1 == "import" ];then
             if [ -z $2 ];then
