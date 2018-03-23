@@ -40,9 +40,9 @@ apt-get install -y git # 安装git
 mkdir -p /data
 cd /data
 git clone https://github.com/kamly/automated-operation.git
-# 安装包目录
-cd automated-operation/install_uninstall
-mkdir src
+# 进入目录，新建文件
+cd automated-operation
+mkdir install_uninstall/src logs 
 ```
 
 ## 2. 上传软件包到服务器或者在线下载安装包
