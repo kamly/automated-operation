@@ -45,11 +45,17 @@ cd automated-operation
 mkdir install_uninstall/src logs 
 ```
 
-## 2. 上传软件包到服务器或者在线下载安装包
+## 2. 软件安装包
 
-软件安装包存放在[云盘](https://pan.baidu.com/s/1jJYgAN0)。
+1. 方法：
 
-先下载到本地，然后上传到服务器的 `./install_uninstall/src/` 目录中
+    软件安装包存放在[云盘](https://pan.baidu.com/s/1jJYgAN0)。
+
+    先下载到本地，然后上传到服务器的 `./install_uninstall/src/` 目录中
+
+2. 方法：
+
+    脚本提供在线下载安装包
 
 ## 3. 各脚本使用方法
 

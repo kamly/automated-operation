@@ -462,8 +462,11 @@ case ${select_way} in
       $plugin_install
     done
 	;;
-  -menu | *) # 菜单安装
+  -menu) # 菜单安装
 		menu
 	;;
+  *)
+    echo 'Error input'
+  ;;
 esac
 

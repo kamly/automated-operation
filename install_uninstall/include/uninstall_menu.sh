@@ -377,8 +377,11 @@ case ${select_way} in
             $plugin_unInstall
         done
 	;;
-    -menu | *) # 菜单安装
-	    menu
+    -menu) # 菜单安装
+		menu
 	;;
+    *)
+        echo 'Error input'
+    ;;
 esac
 
