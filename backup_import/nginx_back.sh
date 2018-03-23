@@ -9,14 +9,14 @@
 # 备份
 nginx_backup(){
 
-    check_backup_dir
+    check_dir_exist ${data_backup_dir}
 
     if [[ `ps aux | grep nginx|grep -v grep|wc -l` == 0 ]];then
         service nginx start # 
     fi
 
     mv  /data/www /data/www_backup # www 只是移动目录
-    mkdir $nginx_backup
+    check_dir_exist $nginx_backup
     cp -R $nginx_install_dir/ssl $nginx_backup # ssl
     cp -R $nginx_install_dir/conf $nginx_backup # conf
         
