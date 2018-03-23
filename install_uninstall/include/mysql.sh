@@ -36,7 +36,7 @@ mysql_install_5.6_bin(){
 
     pushd $src_dir
 
-    down_url ${mysql_down_url[1]}/${mysql_bin_tar[1]}
+    down_url ${mysql_download_url[1]}/${mysql_bin_tar[1]}
     if [ $? != 0 ];then  # 执行失败!=0
         echo "Download ${mysql_bin_tar[1]} failed,please contact author!"
         exit
@@ -66,7 +66,7 @@ mysql_install_5.6_cmake(){
     pushd $src_dir 
 
 
-    down_url ${mysql_down_url[1]}/${mysql_sou_tar[1]}
+    down_url ${mysql_download_url[1]}/${mysql_sou_tar[1]}
     if [ $? != 0 ];then  # 执行失败!=0
         echo "Download ${mysql_sou_tar[1]} failed,please contact author!"
         exit
@@ -112,7 +112,7 @@ mysql_install_5.7_bin(){
     fi
     
     # 下载软件包
-    down_url ${mysql_down_url[2]}/${mysql_bin_tar[2]}
+    down_url ${mysql_download_url[2]}/${mysql_bin_tar[2]}
     if [ $? -ne 0 ];then
         echo "Download ${mysql_bin_tar[2]} failed,please contact author!"
     fi
@@ -139,7 +139,7 @@ mysql_install_5.7_cmake(){
 
     pushd $src_dir
 
-    down_url ${mysql_down_url[2]}/${mysql_sou_tar[2]}
+    down_url ${mysql_download_url[2]}/${mysql_sou_tar[2]}
     if [ $? -ne 0 ];then
         echo "Donwload ${mysql_sou_tar[2]} failed,please contact author!"
         exit
