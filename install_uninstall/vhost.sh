@@ -1,9 +1,8 @@
 #!/bin/bash
 
-. include/common.sh # 引入常量文件
-. include/public.sh # 引入公用函数
-
-. include/sysinfo.sh # 输出系统信息
+. ../include/common.sh # 引入常量文件
+. ../include/public.sh # 引入公用函数
+. ../include/sysinfo.sh # 输出系统信息
 
 # 添加 vhost
 vhost_add(){
