@@ -20,7 +20,7 @@ vhost_add(){
 	nginx -s reload # 重启
 
     echo -e "$GREEN"
-    echo -e "Created ${nginx_root_dir}/${domain_name} success!"
+    echo -e "Created ${nginx_root_dir}${domain_name} success!"
 	echo -e "Created ${nginx_install_dir}/conf/vhost/${domain_name}.conf success!"
 	echo -e "Be careful your nginx server port and php-fpm port !!!"
 }
@@ -35,11 +35,11 @@ vhost_del(){
 		echo -e "${WHITE}You did not intput anything."
 	elif [  -f ${nginx_install_dir}/conf/vhost/${domain_name}.conf ];then
 
-		check_backup_dir
+		check_dir_exist ${nginx_backup}/${domain_name}
 
-		mv ${nginx_root_dir}/${domain_name} ${data_backup_dir}/${domain_name}_`date +%m%d%H%M` # 移动目录
-
-		mv ${nginx_install_dir}/conf/vhost/${domain_name}.conf ${data_backup_dir}/${domain_name}.conf_`date +%m%d%H%M` # 移动配置文件
+		mv ${nginx_root_dir}/${domain_name} ${nginx_root_dir}/${domain_name}_`date +%m%d%H%M` # 移动目录
+		mv ${nginx_install_dir}/conf/ssl/${domain_name} ${nginx_backup}/${domain_name} # 移动ssl
+		mv ${nginx_install_dir}/conf/vhost/${domain_name}.conf ${nginx_backup}/${domain_name} # 移动配置文件
 		
         nginx -s reload
 		
@@ -56,7 +56,7 @@ vhost_del(){
 
 # ./vhost.sh add 
 # ./vhost.sh del
-if [[ -d "/usr/local/nginx" ]];then
+if [[ -d ${nginx_install_dir} ]];then
 	if	[[ "$1" == "add" ]];then
 		echo
 		vhost_add
