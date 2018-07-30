@@ -2,6 +2,36 @@
 
 clear
 
+# 提供help帮助 --help
+if [ ${#@} -ne 0 ] && [ "${@#"--help"}" = "" ];then
+	printf -- './vim.sh <options...> <software> \n';
+	printf -- 'options:\n';
+	printf -- ' 	     -s           指定插件安装\n';
+	printf -- ' 	     -v         指定插件不安装\n';
+	printf -- ' 	     -all            全部安装\n';
+	printf -- 'software:\n';
+	printf -- '   Syntastic\n';
+	printf -- '  SimpylFold\n';
+	printf -- '    NERDTree\n';
+	printf -- '     AirLine\n';
+	printf -- '     Taglist\n';
+	printf -- '       Theme\n';
+	printf -- 'example:\n';
+	printf -- ' ./vim.sh -s Syntastic NERDTree\n';
+	printf -- ' ./vim.sh -v Syntastic Theme\n';
+	printf -- ' ./vim.sh -all\n';
+	printf -- ' ./vim.sh -menu\n';
+fi
+
+# 检查git安装
+_=$(command -v git)
+if [ "$?" != "0" ];then
+	printf -- 'You dont not seem to have git installed \n'; 
+	printf -- 'Get it: .... \n'; 
+	printf -- 'Exiting with status code 127. \n'; 
+	exit 127;
+fi
+
 # 判断Vim的版本是不是basic，如果是，返回0；否则返回1
 function checkVimVersion() {
 	# 先获取vim可执行命令的位置
