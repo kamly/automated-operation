@@ -17,6 +17,11 @@ install() {
     #               Nginx + PHP + MySQL + Redis + ELKF                  #
     #####################################################################"
     
+    # 检查src目录是否存在
+    if [ ! -d "./src" ]; then
+      mkdir ./src
+    fi
+
     . ./include/install_menu.sh    # 执行菜单脚本
 
     # 打印执行时间

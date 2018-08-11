@@ -71,7 +71,7 @@ install_php(){
 
     php_install_dir_use="${php_install_dir}/${php_version[${php_version_select}]}" # php 安装目录
 
-    tar xjvf ${php_bz[${php_version_select}]} && cd ${php_version[${php_version_select}]} # 解压
+    tar -zxvf ${php_bz[${php_version_select}]} && cd ${php_version[${php_version_select}]} # 解压
 
     # 安装 php
     config_php(){

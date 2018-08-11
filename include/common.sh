@@ -82,15 +82,15 @@ php_fpm_port=9000  # 默认端口
 
 
 php_version[1]='php-5.6.30'
-php_version[2]='php-7.1.6'
+php_version[2]='php-7.1.20'
 
-php_bz[1]="${php_version[1]}.tar.bz2"
-php_bz[2]="${php_version[2]}.tar.bz2"
+php_bz[1]="${php_version[1]}.tar.gz"
+php_bz[2]="${php_version[2]}.tar.gz"
 
-# http://hk1.php.net/get/php-7.1.6.tar.bz2/from/this/mirror  下载地址
-# http://mirrors.sohu.com/php/php-7.1.6.tar.bz2 下载地址 使用
-php_download_url[1]="http://mirrors.sohu.com/php/${php_bz[1]}"
-php_download_url[2]="http://mirrors.sohu.com/php/${php_bz[2]}"
+# http://hk1.php.net/get/php-7.1.20.tar.bz2/from/this/mirror  下载地址 使用
+# http://mirrors.sohu.com/php/php-7.1.20.tar.bz2 下载地址 无法访问
+php_download_url[1]="http://hk1.php.net/get/${php_bz[1]}/from/this/mirror"
+php_download_url[2]="http://hk1.php.net/get/${php_bz[2]}/from/this/mirror"
 
 # https://curl.haxx.se/download/curl-7.56.0.tar.bz2  下载地址
 curl_version='curl-7.56.0'
@@ -131,7 +131,7 @@ mysql_port=3306
 
 # mysql版本
 mysql_version[1]='mysql-5.6.38'
-mysql_version[2]='mysql-5.7.20'
+mysql_version[2]='mysql-5.7.22'
 
 # 下载地址
 mysql_download_url[1]='http://mirrors.ustc.edu.cn/mysql-ftp/Downloads/MySQL-5.6'

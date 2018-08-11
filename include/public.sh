@@ -22,6 +22,11 @@ down_url(){
     wget -c --no-check-certificate $*
 }
 
+down_url_o(){
+    wget -O $1 $2 --no-check-certificate
+}
+
+
 # 下载
 check_dir_exist() {
      if [[ ! -d $* ]] ; then

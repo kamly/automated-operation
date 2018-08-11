@@ -40,7 +40,7 @@ function installPhp() {
   while :;do 
     echo -e "Please choose PHP version:
     ${RED} 1)${WHITE} php-5.6.30 ${GREEN} ( Default );
-    ${RED} 2)${WHITE} php-7.1.6;"
+    ${RED} 2)${WHITE} php-7.1.20;"
     read -p "Your select:" php_version_select
     if [[ ! ${php_version_select} =~ ^[1,2]$ ]];then
       echo -e "${RED} Please input 1/2 "
@@ -66,7 +66,7 @@ function installPhp() {
       pushd ${src_dir}
         down_url ${curl_download_url} 
         down_url ${libmcrypt_download_url} 
-        down_url ${php_download_url[${php_version_select}]} 
+	down_url_o ${php_bz[${php_version_select}]}  ${php_download_url[${php_version_select}]}
       popd
     fi
       . ./include/php.sh
